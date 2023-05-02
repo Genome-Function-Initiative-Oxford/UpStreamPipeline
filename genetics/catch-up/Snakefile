@@ -104,21 +104,21 @@ else:
             ### 02 remove adapters
             expand(os.path.join(config["analysis_name"]+os.sep+config["trimming_qc"], "{sample}_qc.txt"), sample=list(samples_r.index)),
             ### 03 mapping using aligner
-            expand(os.path.join(config["analysis_name"]+os.sep+config["aligner"], "{sample}.bam"), sample=list(samples_r.index)),
+            expand(os.path.join(config["analysis_name"]+os.sep+config["aligner"], "{sample}_%s.bam"%genomeV), sample=list(samples_r.index)),
             ### 04 filtering
-            expand(os.path.join(config["analysis_name"]+os.sep+config["filtering"], "{sample}.bam"), sample=list(samples_r.index)),
+            expand(os.path.join(config["analysis_name"]+os.sep+config["filtering"], "{sample}_%s.bam"%genomeV), sample=list(samples_r.index)),
             ### 05 sorting bam files
-            expand(os.path.join(config["analysis_name"]+os.sep+config["sorted"], "{sample}.bam"), sample=list(samples_r.index)),
+            expand(os.path.join(config["analysis_name"]+os.sep+config["sorted"], "{sample}_%s.bam"%genomeV), sample=list(samples_r.index)),
             ### 06 removing duplicates
-            expand(os.path.join(config["analysis_name"]+os.sep+config["duplicates"], "{sample}.bam"), sample=list(samples_r.index)),
+            expand(os.path.join(config["analysis_name"]+os.sep+config["duplicates"], "{sample}_%s.bam"%genomeV), sample=list(samples_r.index)),
             ### 07 merge bams
-            expand(os.path.join(config["analysis_name"]+os.sep+config["merge"], "{sample_merged}.bam"), sample_merged=merge_sample),
+            expand(os.path.join(config["analysis_name"]+os.sep+config["merge"], "{sample_merged}_%s.bam"%genomeV), sample_merged=merge_sample),
             ### 08 bam coverage files
-            expand(os.path.join(config["analysis_name"]+os.sep+config["bam_coverage"], "{sample_merged}.bw"), sample_merged=merge_sample),
+            expand(os.path.join(config["analysis_name"]+os.sep+config["bam_coverage"], "{sample_merged}_%s.bw"%genomeV), sample_merged=merge_sample),
             ### 09 peak calling
-            expand(os.path.join(config["analysis_name"]+os.sep+config["peaks_log"], "{sample_merged}.txt"), sample_or=list(origin_fastq),
-                                                                                                            sample=list(samples_r.index),
-                                                                                                            sample_merged=merge_sample),
+            expand(os.path.join(config["analysis_name"]+os.sep+config["peaks_log"], "{sample_merged}_%s.txt"%genomeV), sample_or=list(origin_fastq),
+                                                                                                                       sample=list(samples_r.index),
+                                                                                                                       sample_merged=merge_sample),
             ################################  end 01_upstream.smk  ################################
             ################################### start 02_qc.smk ###################################
             expand(os.path.join(config["analysis_name"]+os.sep+config["reads_qc"], "{sample_or}.html"), sample_or=list(origin_fastq)),
