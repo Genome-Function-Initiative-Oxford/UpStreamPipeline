@@ -46,6 +46,7 @@ rule trimming:
         trimming_PE_extra=config["trimming_PE_extra"],
         trimming_SE_extra=config["trimming_SE_extra"],
         threads="4",
+        info_trim_file=config["analysis_name"]+os.sep+config["trimming_qc"]+os.sep+"Untrimmed.txt",
     log:
         os.path.join(config["analysis_name"], "logs/02_trimming/{sample}.txt"),
     shell:
@@ -70,6 +71,7 @@ rule trimming:
                     echo Skip trimming PE! >> {output}
                 else
                     cp {params.in_fastq}.fastq.gz {params.out_fastq}.fastq.gz
+                    echo These fastq files have not been trimmed!!! >> {params.info_trim_file}
                     echo Skip trimming SE! >> {output}
                 fi
             fi
@@ -132,6 +134,7 @@ rule filtering:
         extra=config["filtering_extra"],
         end=config["single_paired_end"],
         filtering_folder=config["analysis_name"]+os.sep+config["filtering"],
+        info_filter_file=config["analysis_name"]+os.sep+config["filtering"]+os.sep+"Unfiltered.txt",
     shell:
         """
             if [ {params.end} == "paired" ]
@@ -139,6 +142,7 @@ rule filtering:
                 samtools view -o {output} {params.extra} {input}
             else
                 mkdir -p {params.filtering_folder}
+                echo These bam files have not been filtered (single-end)!!! >> {params.info_filter_file}
                 cp {input} {output}
             fi
         """
@@ -186,6 +190,7 @@ rule merge_bam:
         folder_sorted=config["analysis_name"]+os.sep+config["sorted"],
         folder_merge_bams=config["analysis_name"]+os.sep+config["merge"],
         merge_bams=config["merge_bams"],
+        info_merge_file=config["analysis_name"]+os.sep+config["merge"]+os.sep+"Unmerged.txt",
     log:
         os.path.join(config["analysis_name"], "logs/07_merge/01_merge{sample_merged}_%s.txt"%genomeV),
     shell:
@@ -195,6 +200,7 @@ rule merge_bam:
             then
                 samtools merge {output} {params.folder_sorted}/{wildcards.sample_merged}*
             else
+                echo These bam files have not been merged (as stated in the config file)!!! >> {params.info_merge_file}
                 cp {params.folder_sorted}/{wildcards.sample_merged}* {output}
             fi
         """      
