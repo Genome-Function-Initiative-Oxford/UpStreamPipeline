@@ -1,0 +1,32 @@
+name: upstream
+channels:
+    - anaconda
+    - bioconda
+    - conda-forge
+    - defaults
+    - sgriva
+dependencies:
+    - bedtools
+    - bowtie2
+    - bwa 
+    - bwa-mem2
+    - cutadapt
+    - deeptools
+    - fastqc
+    - multiqc  
+    - conda-forge::ncurses
+    - openssl
+    - picard
+    - pybigwig
+    - python=3.9.10
+    - sambamba
+    - samtools
+    - seaborn
+    - snakemake=7.0.0
+    - snakemake-wrapper-utils
+    - ucsc-bedgraphtobigwig
+    - lanceotron
+    - star=2.7.1a
+    - subread
+    - tabulate=0.8
+    - trimmomatic

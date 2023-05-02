@@ -1,0 +1,138 @@
+###################################################################################################################
+############################################### User defined params ###############################################
+###################################################################################################################
+
+### analysis_name: your analysis must have a unique name. This name will be both the name of your configuration file, and the name of the folder with all analysis
+analysis_name: "analysis"
+
+### fastq_home_dir: specify the directory containing the original fastq files (concatenate lanes from the sequencing)
+fastq_home_dir: "/project/Wellcome_Discovery/sriva/Ery_tmp_fastq"
+
+### single_paired_end: specify if reads are single or paired end ('single' or 'paired')
+single_paired_end: "paired"
+
+### cutadapters_bool: specify if you want to trim the reads ('True' or 'False')
+cutadapters_bool: "False"
+
+### aligner: specify the aligner to use ('bowtie2' or 'bwa-mem2')
+aligner_algorithm: "bowtie2"
+
+### aligner_dir: specify directory where aligner genome is located (do not include final slash '/' at the end of the path)
+aligner_dir: "/databank/igenomes/Homo_sapiens/UCSC/hg38/Sequence/Bowtie2Index/genome"
+
+### merge_bams: specify if you want to merge the bam files ('True' or 'False')
+merge_bams: "True"
+
+### bigDataUrl: specify the location for public bigWigs and this is the link you can copy and paste into UCSC
+### NB: url must end with a slash '/'
+bigDataUrl: "https://datashare.molbiol.ox.ac.uk/public/<username>/.../"
+
+
+
+###################################################################################################################
+########################################## Copy/Move folders (Optional) ###########################################
+###################################################################################################################
+
+### move_output_files: specify if you want to output files ('True' or 'False')
+move_output_files: "False"
+### Specify the directory where final files must be moved (do not include final slash '/' at the end of the path)
+output_dir:        "/project/hugheslab/sriva/data_and_metadata/UpStreamPipelines_out_test"
+### Specify name of new directory that will be created in the ouput directory
+tag_output_dir:    "04_Ery_Differentiation_Oct_2016_SM_Bulk-ATAC-Seq"
+
+###################################################################################################################
+
+### move_bw_public_folder: specify if you want to move the output files in a public folder ('True' or 'False')
+### This is required for visualisation on Multi Locus View or UCSC genome browser
+move_bw_public_folder: "False"
+### Specify public directory where bw files must be copied (do not include final slash '/' at the end of the path)
+public_output_dir:     "/datashare/project/hugheslab/sriva"
+### Specify name of new directory that will be created in the ouput directory
+tag_public_output_dir: "trial"
+
+
+
+###################################################################################################################
+######################################### Optional rule params (Optional) #########################################
+###################################################################################################################
+
+### Option to modify cutadapt parameters (see trimmomatic user manual)
+trimming_SE_extra:          "ILLUMINACLIP:adapters/SE.fa:trimming_params SLIDINGWINDOW:4:20" # if single_paired_end == 'single'
+trimming_PE_extra:          "ILLUMINACLIP:adapters/PE.fa:trimming_params SLIDINGWINDOW:4:20" # if single_paired_end == 'paired'
+
+### Option to modify aligner parameters
+aligner_extra: ""
+
+### Option to modify filtering
+filtering_extra :           "-bShuF 4 -f 3 -q 30"
+
+### Option to modify samtools_sort parameters
+samtools_sort_extra:        "-m 4G"
+
+### Option to modify mark_duplicates parameters
+mark_duplicates_extra:      "--REMOVE_DUPLICATES False"
+
+### Option to modify samtools_index parameters
+samtools_index_extra:        ""
+
+### bam_coverage_params: option to modify bam_covarage parameters (default for Lanceotron)
+bam_coverage_params1:        "-bs 1 --normalizeUsing RPKM"
+bam_coverage_params2:        "--extendReads"
+
+
+
+###################################################################################################################
+############################################ Clean folders (Optional) #############################################
+###################################################################################################################
+
+### delete_intermediate_files: specify if you want to delete intermediate files ('True' or 'False')
+delete_intermediate_files: "True"
+
+### Specify what output must be removed before moving output files ('False' = keep, 'True' = remove)
+single_paired_folder_rm: "False"
+reads_rm:                "True"
+trimming_rm:             "True"
+aligner_rm:              "True"
+filtering_rm:            "True"
+sorted_rm:               "True"
+duplicates_rm:           "True"
+merge_rm:                "False"
+bam_coverage_rm:         "False"
+peaks_rm:                "False"
+track_rm:                "False"
+
+
+
+###################################################################################################################
+############################################## Folders (DO NOT touch) #############################################
+###################################################################################################################
+
+single_paired_folder: "results/00_fastq_home_dir"
+
+reads:                "results/01_reads"
+reads_qc:             "QCs/01_reads"
+
+trimming:             "results/02_trimming"
+trimming_qc:          "QCs/02_trimming"
+
+aligner:              "results/03_aligner"
+aligner_qc:           "QCs/03_aligner"
+
+filtering:            "results/04_filtering"
+
+sorted:               "results/05_sorted"
+
+duplicates:           "results/06_duplicates"
+duplicates_qc:        "QCs/06_duplicates"
+
+merge:                "results/07_merge"
+merge_qc:             "QCs/07_merge"
+
+bam_coverage:         "results/08_bam_coverages"
+
+peaks:                "results/09_peak_calling"
+peaks_log:            "logs/09_peak_calling/"
+
+track:                "results/10_track"
+
+cleaning:             "results/"
