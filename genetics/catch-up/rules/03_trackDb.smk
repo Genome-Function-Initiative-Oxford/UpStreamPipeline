@@ -1,5 +1,7 @@
 samples_r = pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"samples.csv", index_col="sample", sep="\t")
 
+genomeV = config['genome_built_version']
+
 if config['merge_bams']=='True':
     try:
         merge_sample = pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"merge_bams.txt", header=None)[0].tolist()
@@ -12,7 +14,7 @@ else:
     
 rule trackDb:
     input:
-        expand(config["analysis_name"]+os.sep+os.path.join(config["bam_coverage"], "{sample_merged}.bw"), sample_merged=list(merge_sample)),
+        expand(config["analysis_name"]+os.sep+os.path.join(config["bam_coverage"], "{sample_merged}_%s.bw"%genomeV), sample_merged=list(merge_sample)),
     output:
         os.path.join(config["analysis_name"]+os.sep+config["track"], "trackDb.txt"),
     params:

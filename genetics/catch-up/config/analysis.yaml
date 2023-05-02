@@ -20,6 +20,9 @@ aligner_algorithm: "bowtie2"
 ### aligner_dir: specify directory where aligner genome is located (do not include final slash '/' at the end of the path)
 aligner_dir: "/databank/igenomes/Homo_sapiens/UCSC/hg38/Sequence/Bowtie2Index/genome"
 
+### genome_built_version: version of the built genome. It must be consistent with the aligner_dir chosen
+genome_built_version: "hg38"
+
 ### merge_bams: specify if you want to merge the bam files ('True' or 'False')
 merge_bams: "True"
 

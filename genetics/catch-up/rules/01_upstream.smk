@@ -5,6 +5,8 @@ ext_aligner=["_R1.fastq.gz", "_R2.fastq.gz"]
     
 samples_r = pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"samples.csv", index_col="sample", sep="\t")
 
+genomeV = config['genome_built_version']
+
 if config['merge_bams']=='True':
     try:
         merge_sample = pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"merge_bams.txt", header=None)[0].tolist()
@@ -78,7 +80,7 @@ rule aligner:
     input:
         os.path.join(config["analysis_name"]+os.sep+config["trimming_qc"], "{sample}_qc.txt"),
     output:
-        os.path.join(config["analysis_name"]+os.sep+config["aligner"], "{sample}.bam"),
+        os.path.join(config["analysis_name"]+os.sep+config["aligner"], "{sample}_%s.bam"%genomeV),
     params:
         config_name=config["analysis_name"],
         sample_p=expand(config["analysis_name"]+os.sep+os.path.join(config["trimming"], "{samples}"), samples=["{sample}%s"%extB for extB in ext_aligner]),
@@ -90,7 +92,7 @@ rule aligner:
         end=config["single_paired_end"],
         extra=config["aligner_extra"],
     log:
-        os.path.join(config["analysis_name"], "logs/03_aligner/{sample}.txt"),
+        os.path.join(config["analysis_name"], "logs/03_aligner/{sample}_%s.txt"%genomeV),
     shell:
         """
             mkdir -p {params.out_folder}
@@ -120,11 +122,11 @@ rule aligner:
 
 rule filtering:
     input:
-        os.path.join(config["analysis_name"]+os.sep+config["aligner"], "{sample}.bam"),
+        os.path.join(config["analysis_name"]+os.sep+config["aligner"], "{sample}_%s.bam"%genomeV),
     output:
-        os.path.join(config["analysis_name"]+os.sep+config["filtering"], "{sample}.bam"),
+        os.path.join(config["analysis_name"]+os.sep+config["filtering"], "{sample}_%s.bam"%genomeV),
     log:
-        os.path.join(config["analysis_name"], "logs/04_filtering/{sample}.txt"),
+        os.path.join(config["analysis_name"], "logs/04_filtering/{sample}_%s.txt"%genomeV),
     params:
         config_name=config["analysis_name"],
         extra=config["filtering_extra"],
@@ -144,11 +146,11 @@ rule filtering:
         
 rule samtools_sort:
     input:
-        os.path.join(config["analysis_name"]+os.sep+config["filtering"], "{sample}.bam"),
+        os.path.join(config["analysis_name"]+os.sep+config["filtering"], "{sample}_%s.bam"%genomeV),
     output:
-        os.path.join(config["analysis_name"]+os.sep+config["sorted"], "{sample}.bam"),
+        os.path.join(config["analysis_name"]+os.sep+config["sorted"], "{sample}_%s.bam"%genomeV),
     log:
-        os.path.join(config["analysis_name"], "logs/05_samtools_sort/{sample}.txt"),
+        os.path.join(config["analysis_name"], "logs/05_samtools_sort/{sample}_%s.txt"%genomeV),
     params:
         config_name=config["analysis_name"],
         extra=config["samtools_sort_extra"],
@@ -159,12 +161,12 @@ rule samtools_sort:
 
 rule mark_duplicates:
     input:
-        os.path.join(config["analysis_name"]+os.sep+config["sorted"], "{sample}.bam"),
+        os.path.join(config["analysis_name"]+os.sep+config["sorted"], "{sample}_%s.bam"%genomeV),
     output:
-        bam=os.path.join(config["analysis_name"]+os.sep+config["duplicates"], "{sample}.bam"),
-        metrics=os.path.join(config["analysis_name"]+os.sep+config["duplicates_qc"], "{sample}_metrics.txt"),
+        bam=os.path.join(config["analysis_name"]+os.sep+config["duplicates"], "{sample}_%s.bam"%genomeV),
+        metrics=os.path.join(config["analysis_name"]+os.sep+config["duplicates_qc"], "{sample}_%s_metrics.txt"%genomeV),
     log:
-        os.path.join(config["analysis_name"], "logs/06_mark_duplicates/{sample}.txt"),
+        os.path.join(config["analysis_name"], "logs/06_mark_duplicates/{sample}_%s.txt"%genomeV),
     params:
         config_name=config["analysis_name"],
         extra=config["mark_duplicates_extra"],
@@ -176,16 +178,16 @@ rule mark_duplicates:
 
 rule merge_bam:
     input:
-        bam=expand(config["analysis_name"]+os.sep+os.path.join(config["duplicates"], "{samples}.bam"), samples=list(samples_r.index)),
+        bam=expand(config["analysis_name"]+os.sep+os.path.join(config["duplicates"], "{samples}_%s.bam"%genomeV), samples=list(samples_r.index)),
     output:
-        os.path.join(config["analysis_name"]+os.sep+config["merge"], "{sample_merged}.bam"),
+        os.path.join(config["analysis_name"]+os.sep+config["merge"], "{sample_merged}_%s.bam"%genomeV),
     params:
         config_name=config["analysis_name"],
         folder_sorted=config["analysis_name"]+os.sep+config["sorted"],
         folder_merge_bams=config["analysis_name"]+os.sep+config["merge"],
         merge_bams=config["merge_bams"],
     log:
-        os.path.join(config["analysis_name"], "logs/07_merge/01_merge{sample_merged}.txt"),
+        os.path.join(config["analysis_name"], "logs/07_merge/01_merge{sample_merged}_%s.txt"%genomeV),
     shell:
         """
             mkdir -p {params.folder_merge_bams}
@@ -200,11 +202,11 @@ rule merge_bam:
         
 rule samtools_index:
     input:
-        os.path.join(config["analysis_name"]+os.sep+config["merge"], "{sample_merged}.bam"),  
+        os.path.join(config["analysis_name"]+os.sep+config["merge"], "{sample_merged}_%s.bam"%genomeV),  
     output:
-        os.path.join(config["analysis_name"]+os.sep+config["merge"], "{sample_merged}.bam.bai"),        
+        os.path.join(config["analysis_name"]+os.sep+config["merge"], "{sample_merged}_%s.bam.bai"%genomeV),        
     log:
-        os.path.join(config["analysis_name"], "logs/07_merge/02_samtools_index/{sample_merged}.txt"),
+        os.path.join(config["analysis_name"], "logs/07_merge/02_samtools_index/{sample_merged}_%s.txt"%genomeV),
     params:
         config_name=config["analysis_name"],
         extra=config["samtools_index_extra"], 
@@ -215,17 +217,17 @@ rule samtools_index:
         
 rule bam_coverage:
     input:
-        bam=os.path.join(config["analysis_name"]+os.sep+config["merge"], "{sample_merged}.bam"),
-        index=os.path.join(config["analysis_name"]+os.sep+config["merge"], "{sample_merged}.bam.bai"),      
+        bam=os.path.join(config["analysis_name"]+os.sep+config["merge"], "{sample_merged}_%s.bam"%genomeV),
+        index=os.path.join(config["analysis_name"]+os.sep+config["merge"], "{sample_merged}_%s.bam.bai"%genomeV),      
     output:
-        os.path.join(config["analysis_name"]+os.sep+config["bam_coverage"], "{sample_merged}.bw"),
+        os.path.join(config["analysis_name"]+os.sep+config["bam_coverage"], "{sample_merged}_%s.bw"%genomeV),
     params:
         config_name=config["analysis_name"],
         extra1=config["bam_coverage_params1"],
         extra2=config["bam_coverage_params2"], 
         end=config["single_paired_end"],
     log:
-        os.path.join(config["analysis_name"], "logs/08_bam_coverage/{sample_merged}.txt"),
+        os.path.join(config["analysis_name"], "logs/08_bam_coverage/{sample_merged}_%s.txt"%genomeV),
     shell:
         """
             if [ {params.end} == "paired" ]
@@ -239,9 +241,9 @@ rule bam_coverage:
         
 rule peak_lanceotron:
     input:
-        os.path.join(config["analysis_name"]+os.sep+config["bam_coverage"], "{sample_merged}.bw")
+        os.path.join(config["analysis_name"]+os.sep+config["bam_coverage"], "{sample_merged}_%s.bw"%genomeV)
     output:
-        os.path.join(config["analysis_name"]+os.sep+config["peaks_log"], "{sample_merged}.txt"),
+        os.path.join(config["analysis_name"]+os.sep+config["peaks_log"], "{sample_merged}_%s.txt"%genomeV),
     params:
         config_name=config["analysis_name"],
         folder=config["analysis_name"]+os.sep+config["peaks"],
