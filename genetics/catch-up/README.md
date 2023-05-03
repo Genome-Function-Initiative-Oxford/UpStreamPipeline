@@ -48,4 +48,6 @@
 - Submit job ```sbatch submit_upstream.sh```
 
 ### Warning:
-Run or submit the job through the terminal system and not inside e.g. jupyter-lab terminal.
+1) Run or submit the job through the terminal system and not inside e.g. jupyter-lab terminal.
+2) add info about modify_fastq_names.py
+3) add concatenation file info
