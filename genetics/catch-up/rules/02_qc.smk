@@ -16,6 +16,20 @@ rule fastq_fastqc:
         "v1.3.2/bio/fastqc"
 
 
+rule fastq_concat_fastqc:
+    input:
+        expand(os.path.join(config["analysis_name"]+os.sep+config["reads_concat"], "{samp}.txt"), samp=list(samples_r.index)),
+    output:
+        html=os.path.join(config["analysis_name"]+os.sep+config["reads_concat_qc"], "{sample_or_concat}.html"),
+        zip=os.path.join(config["analysis_name"]+os.sep+config["reads_concat_qc"], "{sample_or_concat}_fastqc.zip"),
+    params: "--quiet"
+    log:
+        os.path.join(config["analysis_name"], "logs/01_move_fastq/{sample_or_concat}_concat_fastqc.txt"),
+    threads: 1
+    wrapper:
+        "v1.3.2/bio/fastqc"
+
+
 rule trimming_fastqc:
     input:
         expand(os.path.join(config["analysis_name"]+os.sep+config["trimming_qc"], "{samp}_qc.txt"), samp=list(samples_r.index)),

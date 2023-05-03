@@ -1,5 +1,14 @@
-origin_fastq_raw=pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"fastqfile_home_dir.txt", header=None)[0]
+origin_fastq_raw=pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"1_fastqfile_home_dir.txt", header=None)[0]
 origin_fastq    =[of.split(".fastq.gz")[0] for of in list(origin_fastq_raw)]
+
+### add fastq_concat
+if config["concatenate_fastq"] == True:
+    origin_fastq_raw_concat = pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"2_fastqfile_concat.txt", header=None)[0]
+    origin_fastq_concat = [of.split(".fastq.gz")[0] for of in list(origin_fastq_raw_concat)]
+    read_folder = config["reads_concat"]
+else:
+    read_folder = config["reads"]
+    origin_fastq_conact = origin_fastq
 
 ext_aligner=["_R1.fastq.gz", "_R2.fastq.gz"]
     
@@ -9,7 +18,7 @@ genomeV = config['genome_built_version']
 
 if config['merge_bams']=='True':
     try:
-        merge_sample = pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"merge_bams.txt", header=None)[0].tolist()
+        merge_sample = pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"3_merge_bams.txt", header=None)[0].tolist()
     except:
         print("You must provide 'merge.txt' file")
         sys.exit()
@@ -31,9 +40,53 @@ rule move_fastq:
         """
 
 
-rule trimming:
+rule concatenating:
     input:
         expand(os.path.join(config["analysis_name"]+os.sep+config["reads"], "{samp}.fastq.gz"), samp=list(origin_fastq)),
+    output:
+        os.path.join(config["analysis_name"]+os.sep+config["reads_concat"], "{sample}.txt"),
+    params:
+        folder=config["analysis_name"]+os.sep+config["reads"],
+        end=config["single_paired_end"],
+        concat=config["concatenate_fastq"],
+    log:
+        os.path.join(config["analysis_name"], "logs/01_move_fastq/{sample}_concat.txt"),
+    run:
+        if params.concat == "True":
+            import glob, subprocess
+            if params.end == 'paired':
+                
+                infastq1 = glob.glob(params.folder+os.sep+wildards.sample+"*"+"_R1.fastq.gz")
+                infastq2 = glob.glob(params.folder+os.sep+wildards.sample+"*"+"_R2.fastq.gz")
+
+                outfasq1 = params.folder+os.sep+wildards.sample+"_R1.fastq.gz"
+                outfasq2 = params.folder+os.sep+wildards.sample+"_R2.fastq.gz"
+
+                command = ['cat %s > %s'%(" ".join(infastq1), outfasq1)]
+                subprocess.run(command, shell=True)
+                
+                command = ['cat %s > %s'%(" ".join(infastq2), outfasq2)]
+                subprocess.run(command, shell=True)
+            
+            else:
+                
+                infastq = glob.glob(params.folder+os.sep+wildards.sample+"*"+".fastq.gz")
+                outfasq = params.folder+os.sep+wildards.sample+".fastq.gz"
+
+                command = ['cat %s > %s'%(" ".join(infastq), outfasq)]
+                subprocess.run(command, shell=True)
+            
+            with open(output, 'w') as nfile:
+                nfile.write("Concatenation Done!")
+        else:
+            with open(output, 'w') as nfile:
+                nfile.write("Skip concatenation!")
+
+
+rule trimming:
+    input:
+        c=os.path.join(config["analysis_name"]+os.sep+config["reads_concat"], "{sample}.txt"),
+        # f=expand(os.path.join(config["analysis_name"]+os.sep+read_folder, "{samp}.fastq.gz"), samp=list(origin_fastq_conact)),
     output:
         os.path.join(config["analysis_name"]+os.sep+config["trimming_qc"], "{sample}_qc.txt"),
     params:

@@ -6,13 +6,17 @@
 analysis_name: "analysis"
 
 ### fastq_home_dir: specify the directory containing the original fastq files (concatenate lanes from the sequencing)
-fastq_home_dir: "/project/Wellcome_Discovery/sriva/Ery_tmp_fastq"
+# fastq_home_dir: "/project/Wellcome_Discovery/sriva/Ery_tmp_fastq"
+fastq_home_dir: "/project/Wellcome_Discovery/shared/tmp_fastq_Emily"
 
 ### single_paired_end: specify if reads are single or paired end ('single' or 'paired')
 single_paired_end: "paired"
 
+### concatenate_fastq: specify if you want to concatenate the reads ('True' or 'False')
+concatenate_fastq: "True"
+
 ### cutadapters_bool: specify if you want to trim the reads ('True' or 'False')
-cutadapters_bool: "False"
+cutadapters_bool: "True"
 
 ### aligner: specify the aligner to use ('bowtie2' or 'bwa-mem2')
 aligner_algorithm: "bowtie2"
@@ -24,11 +28,11 @@ aligner_dir: "/databank/igenomes/Homo_sapiens/UCSC/hg38/Sequence/Bowtie2Index/ge
 genome_built_version: "hg38"
 
 ### merge_bams: specify if you want to merge the bam files ('True' or 'False')
-merge_bams: "True"
+merge_bams: "False"
 
 ### bigDataUrl: specify the location for public bigWigs and this is the link you can copy and paste into UCSC
 ### NB: url must end with a slash '/'
-bigDataUrl: "https://datashare.molbiol.ox.ac.uk/public/<username>/.../"
+bigDataUrl: "https://datashare.molbiol.ox.ac.uk/public/project/<project-folder>/.../.bw"
 
 
 
@@ -112,8 +116,11 @@ track_rm:                "False"
 
 single_paired_folder: "results/00_fastq_home_dir"
 
-reads:                "results/01_reads"
-reads_qc:             "QCs/01_reads"
+reads:                "results/01_reads/01_original"
+reads_qc:             "QCs/01_reads/01_original"
+
+reads_concat:         "results/01_reads/02_concatenate"
+reads_concat_qc:      "QCs/01_reads/02_concatenate"
 
 trimming:             "results/02_trimming"
 trimming_qc:          "QCs/02_trimming"

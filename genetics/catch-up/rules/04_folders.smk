@@ -2,9 +2,11 @@ from datetime import datetime
 
 samples_r = pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"samples.csv", index_col="sample", sep="\t")
 
+genomeV = config['genome_built_version']
+
 if config['merge_bams']=='True':
     try:
-        samples = pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"merge_bams.txt", header=None)[0].tolist()
+        samples = pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"3_merge_bams.txt", header=None)[0].tolist()
     except:
         print("You must provide 'merge.txt' file")
         sys.exit()
@@ -14,7 +16,7 @@ else:
 
 rule cleaning_folders:
     input:
-        expand(os.path.join(config["analysis_name"]+os.sep+config["peaks_log"], "{sample_merged}.txt"), sample_merged=samples),
+        expand(os.path.join(config["analysis_name"]+os.sep+config["peaks_log"], "{sample_merged}_%s.txt"%genomeV), sample_merged=samples),
     output:
         os.path.join(config["analysis_name"]+os.sep+config["cleaning"], "moving.txt"),
     params:

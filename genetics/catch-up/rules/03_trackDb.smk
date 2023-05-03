@@ -4,7 +4,7 @@ genomeV = config['genome_built_version']
 
 if config['merge_bams']=='True':
     try:
-        merge_sample = pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"merge_bams.txt", header=None)[0].tolist()
+        merge_sample = pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"3_merge_bams.txt", header=None)[0].tolist()
     except:
         print("You must provide 'merge.txt' file")
         sys.exit()
