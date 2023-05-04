@@ -2,7 +2,7 @@ origin_fastq_raw=pd.read_csv(config["analysis_name"]+os.sep+config["single_paire
 origin_fastq    =[of.split(".fastq.gz")[0] for of in list(origin_fastq_raw)]
 
 ### add fastq_concat
-if config["concatenate_fastq"] == True:
+if config["concatenate_fastq"] == "True":
     origin_fastq_raw_concat = pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"2_fastqfile_concat.txt", header=None)[0]
     origin_fastq_concat = [of.split(".fastq.gz")[0] for of in list(origin_fastq_raw_concat)]
     read_folder = config["reads_concat"]
@@ -44,9 +44,10 @@ rule concatenating:
     input:
         expand(os.path.join(config["analysis_name"]+os.sep+config["reads"], "{samp}.fastq.gz"), samp=list(origin_fastq)),
     output:
-        os.path.join(config["analysis_name"]+os.sep+config["reads_concat"], "{sample}.txt"),
+        f=os.path.join(config["analysis_name"]+os.sep+config["reads_concat"], "{sample}.txt"),
     params:
-        folder=config["analysis_name"]+os.sep+config["reads"],
+        folderin=config["analysis_name"]+os.sep+config["reads"],
+        folderout=config["analysis_name"]+os.sep+config["reads_concat"],
         end=config["single_paired_end"],
         concat=config["concatenate_fastq"],
     log:
@@ -56,11 +57,11 @@ rule concatenating:
             import glob, subprocess
             if params.end == 'paired':
                 
-                infastq1 = glob.glob(params.folder+os.sep+wildards.sample+"*"+"_R1.fastq.gz")
-                infastq2 = glob.glob(params.folder+os.sep+wildards.sample+"*"+"_R2.fastq.gz")
+                infastq1 = glob.glob(params.folderin+os.sep+wildcards.sample+"*"+"_R1.fastq.gz")
+                infastq2 = glob.glob(params.folderin+os.sep+wildcards.sample+"*"+"_R2.fastq.gz")
 
-                outfasq1 = params.folder+os.sep+wildards.sample+"_R1.fastq.gz"
-                outfasq2 = params.folder+os.sep+wildards.sample+"_R2.fastq.gz"
+                outfasq1 = params.folderout+os.sep+wildcards.sample+"_R1.fastq.gz"
+                outfasq2 = params.folderout+os.sep+wildcards.sample+"_R2.fastq.gz"
 
                 command = ['cat %s > %s'%(" ".join(infastq1), outfasq1)]
                 subprocess.run(command, shell=True)
@@ -70,16 +71,16 @@ rule concatenating:
             
             else:
                 
-                infastq = glob.glob(params.folder+os.sep+wildards.sample+"*"+".fastq.gz")
-                outfasq = params.folder+os.sep+wildards.sample+".fastq.gz"
+                infastq = glob.glob(params.folderin+os.sep+wildcards.sample+"*"+".fastq.gz")
+                outfasq = params.folderout+os.sep+wildcards.sample+".fastq.gz"
 
                 command = ['cat %s > %s'%(" ".join(infastq), outfasq)]
                 subprocess.run(command, shell=True)
             
-            with open(output, 'w') as nfile:
+            with open(output.f, 'w') as nfile:
                 nfile.write("Concatenation Done!")
         else:
-            with open(output, 'w') as nfile:
+            with open(output.f, 'w') as nfile:
                 nfile.write("Skip concatenation!")
 
 
@@ -94,7 +95,7 @@ rule trimming:
         cut_bool=config["cutadapters_bool"],
         end=config["single_paired_end"],
         out_folder=config["analysis_name"]+os.sep+config["trimming"],
-        in_fastq=os.path.join(config["analysis_name"]+os.sep+config["reads"], "{sample}"),
+        in_fastq=os.path.join(config["analysis_name"]+os.sep+read_folder, "{sample}"),
         out_fastq=os.path.join(config["analysis_name"]+os.sep+config["trimming"], "{sample}"),
         trimming_PE_extra=config["trimming_PE_extra"],
         trimming_SE_extra=config["trimming_SE_extra"],
@@ -195,7 +196,7 @@ rule filtering:
                 samtools view -o {output} {params.extra} {input}
             else
                 mkdir -p {params.filtering_folder}
-                echo These bam files have not been filtered (single-end)!!! >> {params.info_filter_file}
+                echo These bam files have not been filtered \(single-end\)!!! >> {params.info_filter_file}
                 cp {input} {output}
             fi
         """
@@ -253,7 +254,7 @@ rule merge_bam:
             then
                 samtools merge {output} {params.folder_sorted}/{wildcards.sample_merged}*
             else
-                echo These bam files have not been merged (as stated in the config file)!!! >> {params.info_merge_file}
+                echo These bam files have not been merged \(as stated in the config file\)!!! >> {params.info_merge_file}
                 cp {params.folder_sorted}/{wildcards.sample_merged}* {output}
             fi
         """      

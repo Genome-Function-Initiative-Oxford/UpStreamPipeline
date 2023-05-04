@@ -89,7 +89,7 @@ include: "rules/02_qc.smk"
 include: "rules/03_trackDb.smk"
 include: "rules/04_folders.smk"
 
-if config['cutadapters_bool'] == "False" and config['concatenate_fastq'] == "False":
+if config['cutadapters_bool'] == "False":
 
     rule all:
         input:
@@ -102,47 +102,15 @@ if config['cutadapters_bool'] == "False" and config['concatenate_fastq'] == "Fal
             expand(os.path.join(config["analysis_name"]+os.sep+config["merge_qc"], "{sample_merged}_%s_multiqc.html"%genomeV), sample_merged=merge_sample),
             os.path.join(config["analysis_name"]+os.sep+config["track"], "trackDb.txt"),
             os.path.join(config["analysis_name"]+os.sep+config["cleaning"], "moving.txt")
-
-elif config['cutadapters_bool'] == "True" and config['concatenate_fastq'] == "False":
-    
-    rule all:
-        input:
-            expand(os.path.join(config["analysis_name"]+os.sep+config["peaks_log"], "{sample_merged}_%s.txt"%genomeV), sample_or=list(origin_fastq),
-                                                                                                                       sample=list(samples_r.index),
-                                                                                                                       sample_merged=merge_sample),
-            expand(os.path.join(config["analysis_name"]+os.sep+config["reads_qc"], "{sample_or}.html"), sample_or=list(origin_fastq)),
-            expand(os.path.join(config["analysis_name"]+os.sep+config["trimming_qc"], "{sample_or}_fastqc.txt"), sample=list(samples_r.index), sample_or=list(origin_fastq)),
-            expand(os.path.join(config["analysis_name"]+os.sep+config["aligner_qc"], "{sample}_%s_multiqc.html"%genomeV), sample=list(samples_r.index)),
-            expand(os.path.join(config["analysis_name"]+os.sep+config["duplicates_qc"], "{sample}_%s_multiqc.html"%genomeV), sample=list(samples_r.index)),
-            expand(os.path.join(config["analysis_name"]+os.sep+config["merge_qc"], "{sample_merged}_%s_multiqc.html"%genomeV), sample_merged=merge_sample),
-
-            os.path.join(config["analysis_name"]+os.sep+config["track"], "trackDb.txt"),
-            os.path.join(config["analysis_name"]+os.sep+config["cleaning"], "moving.txt")
-
-elif config['cutadapters_bool'] == "False" and config['concatenate_fastq'] == "True":
-    
-    rule all:
-        input:
-            expand(os.path.join(config["analysis_name"]+os.sep+config["peaks_log"], "{sample_merged}_%s.txt"%genomeV), sample_or=list(origin_fastq),
-                                                                                                                       sample=list(samples_r.index),
-                                                                                                                       sample_merged=merge_sample),
-            expand(os.path.join(config["analysis_name"]+os.sep+config["reads_qc"], "{sample_or}.html"), sample_or=list(origin_fastq)),
-            expand(os.path.join(config["analysis_name"]+os.sep+config["reads_concat_qc"], "{sample_or_concat}.html"), sample=list(samples_r.index), sample_or_concat=list(origin_fastq_concat)),
-            expand(os.path.join(config["analysis_name"]+os.sep+config["aligner_qc"], "{sample}_%s_multiqc.html"%genomeV), sample=list(samples_r.index)),
-            expand(os.path.join(config["analysis_name"]+os.sep+config["duplicates_qc"], "{sample}_%s_multiqc.html"%genomeV), sample=list(samples_r.index)),
-            expand(os.path.join(config["analysis_name"]+os.sep+config["merge_qc"], "{sample_merged}_%s_multiqc.html"%genomeV), sample_merged=merge_sample),
-            os.path.join(config["analysis_name"]+os.sep+config["track"], "trackDb.txt"),
-            os.path.join(config["analysis_name"]+os.sep+config["cleaning"], "moving.txt")
-
 
 else:
+    
     rule all:
         input:
             expand(os.path.join(config["analysis_name"]+os.sep+config["peaks_log"], "{sample_merged}_%s.txt"%genomeV), sample_or=list(origin_fastq),
                                                                                                                        sample=list(samples_r.index),
                                                                                                                        sample_merged=merge_sample),
             expand(os.path.join(config["analysis_name"]+os.sep+config["reads_qc"], "{sample_or}.html"), sample_or=list(origin_fastq)),
-            expand(os.path.join(config["analysis_name"]+os.sep+config["reads_concat_qc"], "{sample_or_concat}.html"), sample=list(samples_r.index), sample_or_concat=list(origin_fastq_concat)),
             expand(os.path.join(config["analysis_name"]+os.sep+config["trimming_qc"], "{sample_or}_fastqc.txt"), sample=list(samples_r.index), sample_or=list(origin_fastq)),
             expand(os.path.join(config["analysis_name"]+os.sep+config["aligner_qc"], "{sample}_%s_multiqc.html"%genomeV), sample=list(samples_r.index)),
             expand(os.path.join(config["analysis_name"]+os.sep+config["duplicates_qc"], "{sample}_%s_multiqc.html"%genomeV), sample=list(samples_r.index)),
@@ -150,6 +118,4 @@ else:
 
             os.path.join(config["analysis_name"]+os.sep+config["track"], "trackDb.txt"),
             os.path.join(config["analysis_name"]+os.sep+config["cleaning"], "moving.txt")
-
-
 
