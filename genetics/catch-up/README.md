@@ -5,7 +5,10 @@
 - This pipeline will run all the analyses in this folder, within the ```config/analysis.yaml``` you can specify where to move all the final analysis files to within your directory and if you would like to delete any intermediate files.
 
 ### Before starting:
-Fasqt names have to be in the following format: \<Sample-name\>_\<condition\>_\<lane\>_\<read\>.fastq.gz. If not in this format, run ```modify_fastq_names.py``` to correct their names. In order to run the script, run as follows:
+Fasqt names have to be in the following format: 
+```\<Sample-name\>\_\<condition\>\_\<lane\>\_\<read\>.fastq.gz```
+
+If not in this format, run ```modify_fastq_names.py``` to correct their names. In order to run the script, run as follows:
     ```
         python modify_fastq_names.py <path-to-fastq-directory>
     ```
