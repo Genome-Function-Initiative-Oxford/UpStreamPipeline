@@ -3,7 +3,7 @@
 #SBATCH --job-name=DownloadRefGenome
 #SBATCH --ntasks=2
 #SBATCH --mem=64G
-#SBATCH --mail-user=simone.riva@imm.ox.ac.uk
+#SBATCH --mail-user=<email>
 #SBATCH --time=03-12:00:00
 #SBATCH --output=%j_%x.out
 #SBATCH --error=%j_%x.err
