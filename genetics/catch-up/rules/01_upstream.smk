@@ -1,7 +1,6 @@
 origin_fastq_raw=pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"1_fastqfile_home_dir.txt", header=None)[0]
 origin_fastq    =[of.split(".fastq.gz")[0] for of in list(origin_fastq_raw)]
 
-### add fastq_concat
 if config["concatenate_fastq"] == "True":
     origin_fastq_raw_concat = pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"2_fastqfile_concat.txt", header=None)[0]
     origin_fastq_concat = [of.split(".fastq.gz")[0] for of in list(origin_fastq_raw_concat)]
