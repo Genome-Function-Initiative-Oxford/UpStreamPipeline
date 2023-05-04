@@ -6,9 +6,10 @@
 
 ### Before starting:
 Fasqt names have to be in the following format: 
-```\<Sample-name\>\_\<condition\>\_\<lane\>\_\<read\>.fastq.gz```
+```<Sample-name>_<condition>_<lane>_<read>.fastq.gz```
 
 If not in this format, run ```modify_fastq_names.py``` to correct their names. In order to run the script, run as follows:
+
     ```
         python modify_fastq_names.py <path-to-fastq-directory>
     ```
