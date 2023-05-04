@@ -76,5 +76,4 @@ If not in this format, run ```modify_fastq_names.py``` to correct their names. I
 - Submit job ```sbatch submit_upstream.sh```
 
 ### Warning:
-1) Run or submit the job through the terminal system and not inside e.g. jupyter-lab terminal.
-2) add info about modify_fastq_names.py
+!!!) Run or submit the job through the terminal system and not inside e.g. jupyter-lab terminal.
