@@ -1,4 +1,4 @@
-# Basic_UCSC_track_hub
+# Basic UCSC track hub
 
 ### Configuration:
 This pipeline will produce the basic track hub for UCSC sessions. In the ```config.yaml``` you can specify where to create files to within your public directory.
