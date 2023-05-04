@@ -10,9 +10,7 @@ Fasqt names have to be in the following format:
 
 If not in this format, run ```modify_fastq_names.py``` to correct their names. In order to run the script, run as follows:
 
-    ```
-        python modify_fastq_names.py <path-to-fastq-directory>
-    ```
+    python modify_fastq_names.py <path-to-fastq-directory>
 
 ### Configuration:
 - The ```config/analysis.yaml``` indicates the *key*-*value* configuration with the respective documentation (open and follow carefully).
