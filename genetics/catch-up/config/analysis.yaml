@@ -63,8 +63,8 @@ tag_public_output_dir: "<tag-output-directory>"
 ###################################################################################################################
 
 ### Option to modify cutadapt parameters (see trimmomatic user manual)
-trimming_SE_extra:          "ILLUMINACLIP:adapters/SE.fa:trimming_params SLIDINGWINDOW:4:20" # if single_paired_end == 'single'
-trimming_PE_extra:          "ILLUMINACLIP:adapters/PE.fa:trimming_params SLIDINGWINDOW:4:20" # if single_paired_end == 'paired'
+trimming_SE_extra:          "ILLUMINACLIP:adapters/SE.fa:2:40:15 SLIDINGWINDOW:4:20" # if single_paired_end == 'single'
+trimming_PE_extra:          "ILLUMINACLIP:adapters/PE.fa:2:40:15 SLIDINGWINDOW:4:20" # if single_paired_end == 'paired'
 
 ### Option to modify aligner parameters
 aligner_extra: ""
