@@ -109,11 +109,11 @@ rule trimming:
                 mkdir -p {params.out_folder}
                 if [ {params.end} == "paired" ]
                 then
-                    trimmomatic PE -threads {threads} {params.in_fastq}_R1.fastq.gz {params.in_fastq}_R2.fastq.gz {params.out_fastq}_R1.fastq.gz {params.out_fastq}_R1_orphan.fastq.gz {params.out_fastq}_R2.fastq.gz {params.out_fastq}_R2_orphan.fastq.gz {params.trimming_PE_extra} > {output}
-                    echo trimming PE DONE! >> {log}
+                    trimmomatic PE -threads {threads} {params.in_fastq}_R1.fastq.gz {params.in_fastq}_R2.fastq.gz {params.out_fastq}_R1.fastq.gz {params.out_fastq}_R1_orphan.fastq.gz {params.out_fastq}_R2.fastq.gz {params.out_fastq}_R2_orphan.fastq.gz {params.trimming_PE_extra}
+                    echo trimming PE DONE! >> {output}
                 else
-                    trimmomatic SE -threads {threads} {params.in_fastq}.fastq.gz {params.out_fastq}.fastq.gz {params.out_fastq}_orphan.fastq.gz {params.trimming_SE_extra} > {output}
-                    echo trimming SE DONE! >> {log}
+                    trimmomatic SE -threads {threads} {params.in_fastq}.fastq.gz {params.out_fastq}.fastq.gz {params.out_fastq}_orphan.fastq.gz {params.trimming_SE_extra}
+                    echo trimming SE DONE! >> {output}
                 fi
             else
                 mkdir -p {params.out_folder}

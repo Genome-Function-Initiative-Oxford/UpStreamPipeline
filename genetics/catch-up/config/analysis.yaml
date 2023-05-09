@@ -5,8 +5,7 @@
 ### analysis_name: your analysis must have a unique name. This name will be both the name of your configuration file, and the name of the folder with all analysis
 analysis_name: "analysis"
 
-### fastq_home_dir: specify the directory containing the original fastq files (concatenate lanes from the sequencing)
-# fastq_home_dir: "/project/Wellcome_Discovery/sriva/Ery_tmp_fastq"
+### fastq_home_dir: specify the directory containing the original fastq files
 fastq_home_dir: "<path-to-fastq-files-directory>"
 
 ### single_paired_end: specify if reads are single or paired end ('single' or 'paired')
