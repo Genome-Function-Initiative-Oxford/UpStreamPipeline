@@ -20,6 +20,8 @@ rule trackDb:
     params:
         bigdataurl=config["bigDataUrl"],
         bigwigs=config["analysis_name"]+os.sep+config["bam_coverage"],
+        public_output_dir=config["public_output_dir"],
+        tag_public_output_dir=config["tag_public_output_dir"],
     log:
         os.path.join(config["analysis_name"], "logs/10_track/trackDb.txt"),
     run:
@@ -29,7 +31,7 @@ rule trackDb:
             for idx, bw in enumerate(bws):
                 name = bw.split('.bw')[0].split('/')[-1]
                 nfile.write('track %s\n'%name)
-                nfile.write('bigDataUrl %s%s.bw\n'%(params.bigdataurl, name))
+                nfile.write('bigDataUrl %s%s.bw\n'%(params.bigdataurl+params.public_output_dir+os.sep+params.tag_public_output_dir, name))
                 nfile.write('shortLabel %s\n'%name)
                 nfile.write('longLabel %s\n'%name)
                 nfile.write('type bigWig\n')
