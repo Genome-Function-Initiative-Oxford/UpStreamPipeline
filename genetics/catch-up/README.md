@@ -1,5 +1,11 @@
 # Bulk ChIP and ATAC sequencing upstream analysis
 
+<figure>
+  <img
+    src="images/catchup_workflow.pdf"
+    alt="workflow">
+</figure>
+
 ### Note:
 - This pipeline works with both single and paired-end fastq data.
 - This pipeline will run all the analyses in this folder, within the ```config/analysis.yaml``` you can specify where to move all the final analysis files to within your directory and if you would like to delete any intermediate files.
