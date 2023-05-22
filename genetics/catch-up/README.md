@@ -18,6 +18,7 @@ If not in this format, run ```modify_fastq_names.py``` to correct their names. I
 <picture>
       <source media="(prefers-color-scheme: dark)" srcset="images/formatting.png">
   <img alt="Illustrative representation explaining how 1_fastqfile_home_dir.txt, 2_fastqfile_concat.txt, and 3_merge_bams.txt must be correctly modified in order to run CATCH-UP" src="images/formatting.png">
+    <figcaption>Illustrative representation explaining how 1_fastqfile_home_dir.txt, 2_fastqfile_concat.txt, and 3_merge_bams.txt must be correctly modified in order to run CATCH-UP</figcaption>
 </picture>
   
   
