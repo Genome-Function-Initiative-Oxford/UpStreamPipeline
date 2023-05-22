@@ -5,8 +5,6 @@
     src="images/catchup_workflow.png"
     alt="workflow"
     width="500"
-    
-    >
 </p>
 
 ### Note:
