@@ -15,8 +15,13 @@ If not in this format, run ```modify_fastq_names.py``` to correct their names. I
 ### Configuration:
 - The ```config/analysis.yaml``` indicates the *key*-*value* configuration with the respective documentation (open and follow carefully).
 
-{% include image.html url="images/formatting.png" description="Illustrative representation explaining how 1_fastqfile_home_dir.txt, 2_fastqfile_concat.txt, and 3_merge_bams.txt must be correctly modified in order to run CATCH-UP" %}
-
+![My image](images/formatting.png)
+{:.image-caption}
+*Illustrative representation explaining how 1_fastqfile_home_dir.txt, 2_fastqfile_concat.txt, and 3_merge_bams.txt must be correctly modified in order to run CATCH-UP*
+.image-caption {
+  text-align: center;
+  font-size: .8rem;
+  color: lightgrey;
   
 - In ```1_fastqfile_home_dir.txt``` must be specified sample names without including read numbers and extension (i.e., *_R1/_R2* and *.fastq.gz*), for example for the following fastq files (single-end sample's names must end with *.fastq.gz*, whilst paired-end with *_R+.fastq.gz*, and they must be stored in the same directory):
     ```
