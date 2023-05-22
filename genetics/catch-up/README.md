@@ -1,12 +1,9 @@
 # Bulk ChIP and ATAC sequencing upstream analysis
 
-<p align="center">
-  <img
-    src="images/catchup_workflow.pdf"
-    alt="workflow"
-    width="500"
-</p>
-  ![Some title here](images/catchup_workflow.pdf)
+
+<object data="images/catchup_workflow.pdf" type="application/pdf" width="80%"> 
+</object>
+
 
 ### Note:
 - This pipeline works with both single and paired-end fastq data.
