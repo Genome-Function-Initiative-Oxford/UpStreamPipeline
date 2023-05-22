@@ -48,6 +48,7 @@ tag_output_dir:    "<tag-output-directory>"
 
 ###################################################################################################################
 
+######### LEAVE move_bw_public_folder EQUAL TO "False" IF YOU DO NOT HAVE ACCESS TO A PUBLIC FOLDER!!!
 ### move_bw_public_folder: specify if you want to move the output files in a public folder ('True' or 'False')
 ### This is required for visualisation on Multi Locus View or UCSC genome browser
 move_bw_public_folder: "False"
