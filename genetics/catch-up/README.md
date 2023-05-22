@@ -6,6 +6,7 @@
     alt="workflow"
     width="500"
 </p>
+  ![Some title here](images/catchup_workflow.pdf)
 
 ### Note:
 - This pipeline works with both single and paired-end fastq data.
