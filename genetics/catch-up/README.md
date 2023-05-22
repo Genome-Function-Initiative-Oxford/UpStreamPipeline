@@ -15,12 +15,15 @@ If not in this format, run ```modify_fastq_names.py``` to correct their names. I
 ### Configuration:
 - The ```config/analysis.yaml``` indicates the *key*-*value* configuration with the respective documentation (open and follow carefully).
 
+
+
 <figure>
   <img
     src="images/formatting.png"
     alt="The beautiful MDN logo.">
     <figcaption>Illustrative representation explaining how 1_fastqfile_home_dir.txt, 2_fastqfile_concat.txt, and 3_merge_bams.txt must be correctly modified in order to run CATCH-UP.</figcaption>
 </figure>
+
 
   
   
