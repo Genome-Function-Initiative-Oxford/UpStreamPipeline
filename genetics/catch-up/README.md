@@ -2,7 +2,7 @@
 
 <p align="center">
   <img
-    src="images/catchup_workflow.png"
+    src="images/catchup_workflow.pdf"
     alt="workflow"
     width="500"
 </p>
