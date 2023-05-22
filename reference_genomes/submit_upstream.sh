@@ -8,6 +8,7 @@
 #SBATCH --output=%j_%x.out
 #SBATCH --error=%j_%x.err
 
-source /project/hugheslab/sriva/anaconda3/bin/activate upstream
+source /path/to/baseenv/bin/activate upstream
+
 snakemake --configfile=config/analysis.yaml all --cores 1 --unlock
 snakemake --configfile=config/analysis.yaml all --cores 1 --rerun-incomplete

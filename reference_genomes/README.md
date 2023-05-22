@@ -5,7 +5,6 @@ This pipeline can be used, if you need to download the reference genome from UCS
 ### Configuration:
 - This pipeline will run all the analyses in this folder, within the ```config/analysis.yaml``` you can specify where to move all the final analysis files to within your directory.
 
-
 ### Output folders:
 - When running the pipeline, ```results``` folder will be automatically generated with all related outputs inside the folder named (*analysis_name*) specified in the configuration file.
 

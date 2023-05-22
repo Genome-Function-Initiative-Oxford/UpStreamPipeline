@@ -16,9 +16,9 @@ cd UpStreamPipeline
 - Check if [Anaconda](https://www.anaconda.com) is installed: ```which conda```   
 - Anaconda is installed if the output is: ```~/anaconda3/condabin/conda```    
 - If Anaconda is not installed: 
-    - ```wget https://repo.continuum.io/archive/Anaconda3-2021.11-Linux-x86_64.sh```
-    - ```bash Anaconda3-2021.11-Linux-x86_64.sh``` and follow the command on the screen (carefully)
-NB: If you do not want to use Anaconda, it is possible to use [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html).
+    - downlaod [Anaconda](https://www.anaconda.com), [Miniconda](https://docs.conda.io/en/latest/miniconda.html), or [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html), using ```wget```, e.g. ```wget https://repo.continuum.io/archive/Anaconda3-2021.11-Linux-x86_64.sh```
+    - run the installer thrugh ```sh```, e.g. ```sh Anaconda3-2021.11-Linux-x86_64.sh``` and follow the command on the screen (carefully)
+NB: If you do not want to use Anaconda, it is possible to use [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html) (we recommend [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html), since mamba is already included).
 
 ### Create Anaconda environment:
 Activate Anaconda env base (if not active): ```conda activate base``` or ```conda activate```
