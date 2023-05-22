@@ -1,5 +1,11 @@
 # Bulk ChIP and ATAC sequencing upstream analysis
 
+<figure>
+  <img
+    src="images/catchup_workflow.pdf"
+    alt="workflow">
+</figure>
+
 ### Note:
 - This pipeline works with both single and paired-end fastq data.
 - This pipeline will run all the analyses in this folder, within the ```config/analysis.yaml``` you can specify where to move all the final analysis files to within your directory and if you would like to delete any intermediate files.
@@ -15,18 +21,12 @@ If not in this format, run ```modify_fastq_names.py``` to correct their names. I
 ### Configuration:
 - The ```config/analysis.yaml``` indicates the *key*-*value* configuration with the respective documentation (open and follow carefully).
 
-
-
 <figure>
   <img
     src="images/formatting.png"
-    alt="The beautiful MDN logo.">
-    <figcaption>Illustrative representation explaining how 1_fastqfile_home_dir.txt, 2_fastqfile_concat.txt, and 3_merge_bams.txt must be correctly modified in order to run CATCH-UP.</figcaption>
+    alt="formatting">
 </figure>
 
-
-  
-  
 - In ```1_fastqfile_home_dir.txt``` must be specified sample names without including read numbers and extension (i.e., *_R1/_R2* and *.fastq.gz*), for example for the following fastq files (single-end sample's names must end with *.fastq.gz*, whilst paired-end with *_R+.fastq.gz*, and they must be stored in the same directory):
     ```
         Sample1_conditionA_L001_R1.fastq.gz
