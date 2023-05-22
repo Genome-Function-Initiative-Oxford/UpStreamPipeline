@@ -2,7 +2,7 @@
 
 <figure>
   <img
-    src="images/catchup_workflow.pdf"
+    src="images/catchup_workflow.png"
     alt="workflow">
 </figure>
 
