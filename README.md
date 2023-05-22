@@ -13,22 +13,19 @@ cd UpStreamPipeline
 ```
 
 ### Anaconda installation
-- Check if [Anaconda](https://www.anaconda.com) is installed: ```which conda```   
-- Anaconda is installed if the output is: ```~/anaconda3/condabin/conda```    
-- If Anaconda is not installed: 
-    - downlaod [Anaconda](https://www.anaconda.com), [Miniconda](https://docs.conda.io/en/latest/miniconda.html), or [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html), using ```wget```, e.g. ```wget https://repo.continuum.io/archive/Anaconda3-2021.11-Linux-x86_64.sh```
-    - run the installer thrugh ```sh```, e.g. ```sh Anaconda3-2021.11-Linux-x86_64.sh``` and follow the command on the screen (carefully)
-NB: If you do not want to use Anaconda, it is possible to use [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html) (we recommend [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html), since mamba is already included).
+- Check if [Anaconda](https://www.anaconda.com), [Miniconda](https://docs.conda.io/en/latest/miniconda.html), or [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html) is installed, using ```which conda```   
+- If installed the output is: ```~/anaconda3/condabin/conda```.
+- If [Anaconda](https://www.anaconda.com), [Miniconda](https://docs.conda.io/en/latest/miniconda.html), or [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html) is not installed: 
+    - We recommend to install [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html), since it has already integrated mamba for a fast and parallelisable installation.
+    - Download [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html) ([Anaconda](https://www.anaconda.com) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html)) using ```wget```, e.g. ```wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh```.
+    - Run the installer through ```sh```, e.g. ```sh Mambaforge-Linux-x86_64.sh``` and follow the command on the screen (carefully).
 
 ### Create Anaconda environment:
-Activate Anaconda env base (if not active): ```conda activate base``` or ```conda activate```
+Activate conda env base (if not active): ```conda activate base``` or ```conda activate```
 
-There are two ways to create the upstream environment:
-1) Create conda env upstream using conda: ```conda env create --file=envs/upstream.yml``` and follow the on screen instruction.
-
-2) To make the installation faster, you can install mamba (point **a**) (unless [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html) was installed, which already contains mamba, and you can skip to point (**b**): 
-    **a**) ```conda install -c conda-forge mamba``` and follow the screen. If the command raises any conflicts, try ```conda install mamba -n base -c conda-forge```. 
-    **b**) Then, create the env upstream using mamba: ```mamba env create --file=envs/upstream.yml``` and follow the on screen instruction.
+There are two ways to create the conda env upstream environment:
+1) Using mamba (if [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html) was installed): ```mamba env create --file=envs/upstream.yml``` and follow the on screen instruction.
+2) Using conda: ```conda env create --file=envs/upstream.yml``` and follow the on screen instruction.
 
 Now, the upstream environment is created and needs to be activated: ```conda activate upstream```. You can then access one of the following pipelines and play with it (enjoy!).
         
