@@ -4,7 +4,8 @@
   <img
     src="images/catchup_workflow.png"
     alt="workflow"
-    width="600"
+    width="500"
+    align="center"
     >
 </figure>
 
