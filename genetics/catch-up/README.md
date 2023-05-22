@@ -1,7 +1,7 @@
 # Bulk ChIP and ATAC sequencing upstream analysis
 
 
-<object data="images/catchup_workflow.pdf" type="application/pdf" width="80%"> 
+<object data="images/catchup_workflow.pdf" width="80%"> 
 </object>
 
 
