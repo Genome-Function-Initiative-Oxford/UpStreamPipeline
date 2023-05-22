@@ -14,6 +14,13 @@ If not in this format, run ```modify_fastq_names.py``` to correct their names. I
 
 ### Configuration:
 - The ```config/analysis.yaml``` indicates the *key*-*value* configuration with the respective documentation (open and follow carefully).
+
+<img
+  src="images/formatting.png"
+  alt="Alt text"
+  title="Optional title"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+  
 - In ```1_fastqfile_home_dir.txt``` must be specified sample names without including read numbers and extension (i.e., *_R1/_R2* and *.fastq.gz*), for example for the following fastq files (single-end sample's names must end with *.fastq.gz*, whilst paired-end with *_R+.fastq.gz*, and they must be stored in the same directory):
     ```
         Sample1_conditionA_L001_R1.fastq.gz
