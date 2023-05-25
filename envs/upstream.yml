@@ -5,6 +5,7 @@ channels:
     - conda-forge
     - defaults
     - sgriva
+    - r
 dependencies:
     - bedtools
     - bowtie2
@@ -15,6 +16,7 @@ dependencies:
     - deeptools
     - fastqc
     - iced
+    - macs2
     - multiqc  
     - conda-forge::ncurses
     - openssl
@@ -28,6 +30,8 @@ dependencies:
     - snakemake-wrapper-utils
     - ucsc-bedgraphtobigwig
     - lanceotron
+    - ggplot2
+    - r-rcolorbrewer
     - star=2.7.1a
     - subread
     - tabulate=0.8
