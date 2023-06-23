@@ -30,7 +30,7 @@ dependencies:
     - snakemake-wrapper-utils
     - ucsc-bedgraphtobigwig
     - lanceotron
-    - ggplot2
+    - r-ggplot2
     - r-rcolorbrewer
     - star=2.7.1a
     - subread
