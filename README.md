@@ -8,7 +8,7 @@
 
 ### Clone the repository
 ```
-git clone git@github.com:Hughes-Genome-Group/UpStreamPipeline.git
+git clone git@github.com:Genome-Function-Initiative-Oxford/UpStreamPipeline.git
 cd UpStreamPipeline
 ```
 
