@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH --partition=batch
-#SBATCH --job-name=ery
+#SBATCH --partition=<partition-name>
+#SBATCH --job-name=<job-name>
 #SBATCH --ntasks=2
 #SBATCH --mem=64G
-#SBATCH --mail-user=simone.riva@imm.ox.ac.uk
+#SBATCH --mail-user=<your-email>
 #SBATCH --time=03-12:00:00
 #SBATCH --output=%j_%x.out
 #SBATCH --error=%j_%x.err
