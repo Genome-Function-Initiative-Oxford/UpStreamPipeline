@@ -12,7 +12,7 @@
 ### Note:
 - This pipeline works with both single and paired-end fastq data.
 - This pipeline will run all the analyses in this folder, within the ```config/analysis.yaml``` you can specify where to move all the final analysis files to within your directory and if you would like to delete any intermediate files.
-- If you need to download and index the reference genome for your analysis, please go to the [reference_genomes folder](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/reference_genomes).
+- If you need to download and index the reference genome for your analysis, please go to the [reference_genomes](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/reference_genomes) folder.
 
 ### Before starting:
 Fasqt names have to be in the following format: 
