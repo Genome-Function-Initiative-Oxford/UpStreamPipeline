@@ -87,7 +87,7 @@ mkdir DNase_example
 cd DNase_example
 wget https://www.encodeproject.org/files/ENCFF001BOB/@@download/ENCFF001BOB.fastq.gz # download DNase fastq example from ENCODE
 cd ..
-echo “ENCFF001BOB” > 1_fastqfile_home_dir.txt # create file listing samples 
+echo ENCFF001BOB > 1_fastqfile_home_dir.txt # create file listing samples 
 conda activate upstream
 snakemake --configfile=config/DNase_example.yaml all --cores 2 # config already created for this example
 ```
