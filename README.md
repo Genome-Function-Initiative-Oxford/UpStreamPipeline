@@ -43,7 +43,12 @@ Now, the upstream environment is created and needs to be activated: ```conda act
    git pull            # pull updates
    ```
 - or removing the cloned repository using ```rm -rf UpStreamPipeline``` (using `rm` carefully) and re-clone the repository as described above.
-    
+
+<hr>
+
+### Environment installation note:
+CATCH-UP has been successfully tested for the following operating systems: Ubuntu, CentOS, macOS (Intel CPU), and Windows. Unfortunately, it is not possible to install on macOS with M CPUs at the moment. For any error in the installation step, please open an "issue" so we can give a general solution for users.
+
 <hr>
 
 ### Contact us
