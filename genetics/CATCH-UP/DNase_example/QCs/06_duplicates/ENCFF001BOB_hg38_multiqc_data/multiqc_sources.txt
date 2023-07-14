@@ -1,0 +1,3 @@
+Module	Section	Sample Name	Source
+Picard	DuplicationMetrics	ENCFF001BOB_hg38	/ceph/project/Wellcome_Discovery/sriva/Git/UpStreamPipeline/genetics/CATCH-UP/DNase_example/QCs/06_duplicates/ENCFF001BOB_hg38_metrics.txt
+Samtools	stats	ENCFF001BOB_hg38_stats	/ceph/project/Wellcome_Discovery/sriva/Git/UpStreamPipeline/genetics/CATCH-UP/DNase_example/QCs/06_duplicates/ENCFF001BOB_hg38_stats.txt

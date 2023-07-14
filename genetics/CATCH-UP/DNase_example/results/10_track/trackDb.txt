@@ -1,0 +1,9 @@
+track ENCFF001BOB_hg38
+bigDataUrl https://datashare.molbiol.ox.ac.uk/public/project/<project-folder>/.../...bw/ENCFF001BOB_hg38.bw
+shortLabel ENCFF001BOB_hg38
+longLabel ENCFF001BOB_hg38
+type bigWig
+visibility full
+autoScale on
+priority 1
+

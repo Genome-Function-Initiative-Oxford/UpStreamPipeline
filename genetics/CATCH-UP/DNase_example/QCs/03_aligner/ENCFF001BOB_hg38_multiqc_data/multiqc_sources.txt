@@ -1,0 +1,2 @@
+Module	Section	Sample Name	Source
+Samtools	stats	ENCFF001BOB_hg38_stats	/ceph/project/Wellcome_Discovery/sriva/Git/UpStreamPipeline/genetics/CATCH-UP/DNase_example/QCs/03_aligner/ENCFF001BOB_hg38_stats.txt

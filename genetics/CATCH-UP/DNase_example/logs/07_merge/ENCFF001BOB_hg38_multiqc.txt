@@ -1,0 +1,10 @@
+
+  /// MultiQC 🔍 | v1.14
+
+|           multiqc | Search path : /ceph/project/Wellcome_Discovery/sriva/Git/UpStreamPipeline/genetics/CATCH-UP/DNase_example/QCs/07_merge
+|         searching | ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 1/1  
+|          samtools | Found 1 stats reports
+|           multiqc | Compressing plot data
+|           multiqc | Report      : DNase_example/QCs/07_merge/ENCFF001BOB_hg38_multiqc.html
+|           multiqc | Data        : DNase_example/QCs/07_merge/ENCFF001BOB_hg38_multiqc_data
+|           multiqc | MultiQC complete
