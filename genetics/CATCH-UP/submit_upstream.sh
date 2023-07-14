@@ -10,5 +10,5 @@
 
 source /path/to/baseenv/bin/activate upstream
 
-snakemake --configfile=config/analysis.yaml all --cores 8 --unlock
-snakemake --configfile=config/analysis.yaml all --cores 8 --rerun-incomplete
+snakemake --configfile=config/tutorial.yaml all --cores 2 --unlock
+snakemake --configfile=config/tutorial.yaml all --cores 2 --rerun-incomplete

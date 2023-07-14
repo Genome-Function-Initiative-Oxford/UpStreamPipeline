@@ -1,1 +1,4 @@
-Don001-CD34-day10-RAD21-rep1_S1
+Sample1_conditionA
+Sample1_conditionB
+Sample2_conditionA
+Sample2_conditionB

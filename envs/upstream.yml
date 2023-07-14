@@ -21,6 +21,7 @@ dependencies:
     - conda-forge::ncurses
     - openssl
     - picard
+    # - pybedtools
     - pybigwig
     - python=3.9.10
     - sambamba
@@ -36,3 +37,4 @@ dependencies:
     - subread
     - tabulate=0.8
     - trimmomatic
+    # - trim-galore flash ucsc-blat  java-jdk ucsc-wigtobigwig biopython repeatmasker
