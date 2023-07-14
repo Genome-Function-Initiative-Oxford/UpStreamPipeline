@@ -10,5 +10,6 @@
 
 source /path/to/baseenv/bin/activate upstream
 
-snakemake --configfile=config/tutorial.yaml all --cores 2 --unlock
-snakemake --configfile=config/tutorial.yaml all --cores 2 --rerun-incomplete
+# select and edit the config file accordingly
+snakemake --configfile=config/analysis.yaml all --cores 2 --unlock
+snakemake --configfile=config/analysis.yaml all --cores 2 --rerun-incomplete
