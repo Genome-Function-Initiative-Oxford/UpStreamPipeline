@@ -1,1 +1,8 @@
-ENCFF001BOB
+Sample1_conditionA_L001
+Sample1_conditionA_L002
+Sample1_conditionB_L001
+Sample1_conditionB_L002
+Sample2_conditionA_L001
+Sample2_conditionA_L002
+Sample2_conditionB_L001
+Sample2_conditionB_L002
