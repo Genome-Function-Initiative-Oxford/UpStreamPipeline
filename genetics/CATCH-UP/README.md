@@ -83,8 +83,8 @@ If not in this format, run ```modify_fastq_names.py``` to correct their names. I
 
 ### Example run on a single fastq file:
 ```
-mkdir DNase_example
-cd DNase_example
+mkdir DNase_fastq_example
+cd DNase_fastq_example
 wget https://www.encodeproject.org/files/ENCFF001BOB/@@download/ENCFF001BOB.fastq.gz # download DNase fastq example from ENCODE
 cd ..
 echo ENCFF001BOB > 1_fastqfile_home_dir.txt # create file listing samples 

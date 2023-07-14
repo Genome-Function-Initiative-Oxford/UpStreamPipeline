@@ -6,7 +6,7 @@
 analysis_name: "DNase_example"
 
 ### fastq_home_dir: specify the directory containing the original fastq files
-fastq_home_dir: "DNase_fq_example"
+fastq_home_dir: "DNase_fastq_example"
 
 ### single_paired_end: specify if reads are single or paired end ('single' or 'paired')
 single_paired_end: "single"
@@ -15,7 +15,7 @@ single_paired_end: "single"
 concatenate_fastq: "False"
 
 ### cutadapters_bool: specify if you want to trim the reads ('True' or 'False')
-cutadapters_bool: "True"
+cutadapters_bool: "False"
 
 ### aligner: specify the aligner to use ('bowtie2' or 'bwa-mem2')
 aligner_algorithm: "bowtie2"
@@ -100,7 +100,7 @@ macs2_extra2: "-B --call-summits"
 ###################################################################################################################
 
 ### delete_intermediate_files: specify if you want to delete intermediate files ('True' or 'False')
-delete_intermediate_files: "False"
+delete_intermediate_files: "True"
 
 ### Specify what output must be removed before moving output files ('False' = keep, 'True' = remove)
 single_paired_folder_rm: "False"
@@ -110,7 +110,7 @@ aligner_rm:              "True"
 filtering_rm:            "True"
 sorted_rm:               "True"
 duplicates_rm:           "True"
-merge_rm:                "False"
+merge_rm:                "True"
 bam_coverage_rm:         "False"
 peaks_rm:                "False"
 track_rm:                "False"
