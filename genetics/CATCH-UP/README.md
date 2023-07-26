@@ -1,12 +1,12 @@
 # Bulk ChIP and ATAC sequencing upstream analysis
 
 
-<p align="center">
+<!-- <p align="center">
   <img
     src="images/catchup_workflow.png"
     alt="workflow"
     width="500"
-</p>
+</p> -->
 
 
 ### Note:
