@@ -4,7 +4,7 @@ This pipeline is deisgned to build the genome that is required for the [Calibrat
 
 ### Overview
 In brief, this pipeline proceeds as follows:
-1. Two specified input genome fasta files (one for the cell type of interest and one for the spike-in) are specified by the user in the [config.yaml](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/genetics/Build-Calibration-Genome/config.yaml) file.
+1. Two specified input genome fasta files (one for the cell type of interest and one for the spike-in) are specified by the user in the [config.yaml](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/genetics/Build-Calibration-Genome/config/config.yaml) file.
 2. The chromosomes in these fasta files are renamed to include the genome e.g., chr1 --> chr1_mm39 (target) and chr1_dm6 (spike-in).
 3. The two fasta files are catenated, the renamed chromosomes distinguish the origin species.
 4. The catenated genome is indexed using Bowtie2.
