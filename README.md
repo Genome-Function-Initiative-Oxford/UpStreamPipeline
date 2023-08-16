@@ -4,10 +4,10 @@
 
 
 ### Currently available pipelines
-Further information is supplied in the README files for each of these pipeline.
+Further information is supplied in the README files for each of these pipelines.
 
 #### :heavy_plus_sign: Helper Pipelines
-[Reference genomes](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/reference_genomes)   
+[Reference genomes](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/Reference_Genomes)   
 This is designed to streamline the download and index of reference genomes for use in the other pipelines.
 
 [Build Calibration Genome](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/Build-Calibration-Genome)    
