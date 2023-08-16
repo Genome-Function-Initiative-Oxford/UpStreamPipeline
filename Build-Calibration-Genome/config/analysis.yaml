@@ -9,28 +9,28 @@ analysis_name: "analysis"
 ### genome1: directory for target genome
 genome1: 
     ### fa: specify directory where genome is located
-    fa:  "/t1-data/project/fgenomics/herrmann/upstream_pipelines/01_Download_Index_Genomes/mm39_download/results/mm39.bowtie2.index/mm39.fa"
+    fa:  "" #<path-to-first-fasta-file>
     ### chr: specify genome_chromosome
-    chr: "mm39_chr"
+    chr: "" #<first-genome-id> e.g., "mm39_chr"
 
 ### genome2: directory for spikein genome
 genome2: 
     ### fa: specify directory where spikein is located
-    fa:  "/t1-data/project/fgenomics/herrmann/upstream_pipelines/01_Download_Index_Genomes/hg38_download/results/hg38.bowtie2.index/hg38.fa"
+    fa:  "" #<path-to-second-fasta-file>
     ### chr: specify genome_chromosome
-    chr: "hg38_chr"
+    chr:  "" #<second-genome-id> e.g., "hg38_chr"
 
 
 ###################################################################################################################
 ################################################### Move folders ##################################################
 ###################################################################################################################
 
-### move_output_files: specify if you want to output files ('true' or 'false')
-move_output_files: "false"
+### move_output_files: specify if you want to output files ('True' or 'False')
+move_output_files: "False"
 ### Specify the directory where final files must be moved.
-output_dir:        "/t1-data/project/hugheslab/sriva/private_tools/upstream_pipelines_output/Build-Custom-Genome"
+output_dir:        "" #<path-to-output-directory>
 ### Specify tag output directory.
-tag_output_dir:    "trial"
+tag_output_dir:    "" #<tag-output-directory>
 
 ###################################################################################################################
 ############################################## Folders (DO NOT touch) #############################################

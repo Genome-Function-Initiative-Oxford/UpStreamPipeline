@@ -27,7 +27,7 @@ rule custom_genome:
             rm -rf {params.out}/genome1.fa
             rm -rf {params.out}/genome2.fa
             
-            if [ {params.move_output_files} == "true" ]
+            if [ {params.move_output_files} == "True" ]
             then
                 mkdir -p {params.out_dir}/{params.out_dir_tag}
                 mv {params.config_name} {params.out_dir}/{params.out_dir_tag}/

@@ -20,9 +20,9 @@ method: "bowtie2"
 ### move_output_files: specify if you want to move output files ('True' or 'False')
 move_output_files: "False"
 ### Specify the directory where final files must be moved (do not include final slash '/' at the end of the path)
-output_dir:        "<path-to-output-directory>"
+output_dir:        "" #<path-to-output-directory>
 ### Specify name of new directory that will be created in the ouput directory
-tag_output_dir:    "<tag-output-directory>"
+tag_output_dir:    "" #<tag-output-directory>
 
 ###################################################################################################################
 ############################################## Folders (DO NOT touch) #############################################

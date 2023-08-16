@@ -10,8 +10,8 @@ When running the pipeline, ```results``` folder will be automatically generated 
 - Run snakemake selecting number of cores (for parallelisation purpose) ``` snakemake --configfile=config/analysis.yaml all --cores 1```
 
 ##### Run snakemake (slurm)
-- Modify parameters of ```submit_upstream.sh```
-- Submit job ```sbatch submit_upstream.sh```
+- Modify parameters of ```submit.sh```
+- Submit job ```sbatch submit.sh```
 
 <hr>
 

@@ -100,8 +100,8 @@ snakemake --configfile=config/DNase_example.yaml all --cores 2 # config already 
 - Run snakemake selecting number of cores (for parallelisation purpose) ```snakemake --configfile=config/analysis.yaml all --cores 4```
 
 ### Run snakemake (slurm):
-- Modify parameters of ```submit_upstream.sh```
-- Submit job ```sbatch submit_upstream.sh```
+- Modify parameters of ```submit.sh```
+- Submit job ```sbatch submit.sh```
 
 ### Warning:
 !!!) Run or submit the job through the terminal system and not inside e.g. jupyter-lab terminal.

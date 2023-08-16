@@ -7,7 +7,7 @@
 analysis_name: "analysis"
 
 ### genome: choose the genome for the UCSC track
-genome: "hg38"
+genome: "" #<genome version> e.g., "hg38"
 
 
 
@@ -16,9 +16,9 @@ genome: "hg38"
 ###################################################################################################################
 
 ### Specify public directory where bw files must be copied (do not include final slash '/' at the end of the path)
-pub_directory:     "<path-to-output-directory>"
+pub_directory:     "" #<path-to-output-directory>
 ### Specify name of new directory that will be created in the ouput directory
-tag_pub_directory: "<tag-output-directory>"
+tag_pub_directory: "" #<tag-output-directory>
 
 
 
