@@ -22,7 +22,7 @@ Locally: select the number of cores (for parallelisation purpose)
 snakemake --configfile=config/analysis.yaml all --cores 1
 ```
 Cluster system (slurm):
-1. Modify parameters of [submit_upstream.sh](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/genetics/Build-Calibration-Genome/submit_upstream.sh)
+1. Modify parameters of [submit_upstream.sh](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/blob/main/Build-Calibration-Genome/submit_upstream.sh)
 2. Submit job:
 ```
 sbatch submit_upstream.sh
