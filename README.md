@@ -1,57 +1,113 @@
 # Upstream pipelines repository
 
-### Warning for Oxford University CCB users
-<ins>When using this repository, use the default terminal and do not load any module in the server (if logged-in).</ins>
+"Upstream" includes the necessary steps to go from raw data output (usually fastq files) to a format which is visually interpretable by a researcher (e.g., bigwigs). These upstream pipelines allow wet-lab scientists to reproducibly analyse their own data without needing any prior knowledge of bioinformatics. These pipelines are built using the snakemake framework and designed to be both user-friendly and to combat the issue of reproducibility in ChIP-seq and ATAC-seq data analysis.
 
 
-## Installation instructions for conda environment
+### Currently available pipelines
+Further information is supplied in the README files for each of these pipeline.
 
-### Clone the repository
+#### :heavy_plus_sign: Helper Pipelines
+[Reference genomes](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/reference_genomes)   
+This is designed to streamline the download and index of reference genomes for use in the other pipelines.
+
+[Build Calibration Genome](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/Build-Calibration-Genome)    
+This is designed to streamline the catenation and indexing of a reference genome with a spike-in genome for use in the Calibrated ChIP-seq.
+
+#### :dna: Main Pipelines 
+[CATCH-UP](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/genetics/CATCH-UP)   
+Designed for the upstream analysis of bulk ChIP-seq and ATAC-seq data.
+
+[Calibrated ChIP-seq](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/genetics/ChIP-Seq-Calibrated)   
+This is specifically designed for the analysis of ChIP-seq data across different experimental and biological conditions in which rigorous normalisation is required for comparison across conditions.
+
+[tCaptureC](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/genetics/tCaptureC)   
+A pipeline which can be used for the analysis of both Capture-C and Tiled Capture-C data.  This incorporates the previously published [HiCPro](https://github.com/nservant/HiC-Pro) and [HiCPlotter](https://github.com/akdemirlab/HiCPlotter) tools into one streamlined analysis.
+
+
+***
+## Getting started
+
+
+### Installation instructions for conda environment
+
+#### 1. Clone the repository
 ```
 git clone git@github.com:Genome-Function-Initiative-Oxford/UpStreamPipeline.git
 cd UpStreamPipeline
 ```
 
-### Anaconda installation
-- Check if [Anaconda](https://www.anaconda.com), [Miniconda](https://docs.conda.io/en/latest/miniconda.html), or [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html) is installed, using ```which conda```   
-- If installed the output is: ```~/anaconda3/condabin/conda```.
-- If [Anaconda](https://www.anaconda.com), [Miniconda](https://docs.conda.io/en/latest/miniconda.html), or [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html) is not installed: 
-    - We recommend to install [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html), since it has already integrated mamba for a fast and parallelisable installation.
-    - Download [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html) ([Anaconda](https://www.anaconda.com) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html)) using ```wget```, e.g. ```wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh```.
-    - Run the installer through ```sh```, e.g. ```sh Mambaforge-Linux-x86_64.sh``` and follow the command on the screen (carefully).
+#### 2. Install anaconda
+Check if [Anaconda](https://www.anaconda.com), [Miniconda](https://docs.conda.io/en/latest/miniconda.html), or [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html) is installed, using:
+```
+which conda
+```   
+If installed, the output should be:
+```
+~/anaconda3/condabin/conda
+```
+If [Anaconda](https://www.anaconda.com), [Miniconda](https://docs.conda.io/en/latest/miniconda.html), or [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html) is not installed, we recommend to install [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html), since it has already integrated mamba for a fast and parallelisable installation.   
 
-### Create Anaconda environment:
-Activate conda env base (if not active): ```conda activate base``` or ```conda activate```
+
+Download [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html) ([Anaconda](https://www.anaconda.com) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html)):
+```
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+```
+- Run the installer as follows, and follow the on-screen commands.
+```
+sh Mambaforge-Linux-x86_64.sh
+``` 
+#### 3. Create Anaconda environment
+Activate the conda 'base' environment (if not active): 
+```
+conda activate base
+```
 
 There are two ways to create the conda env upstream environment:
-1) Using mamba (if [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html) was installed): ```mamba env create --file=envs/upstream.yml``` and follow the on screen instruction.
-2) Using conda: ```conda env create --file=envs/upstream.yml``` and follow the on screen instruction.
+1) Using mamba (if [Mambaforge](https://mamba.readthedocs.io/en/latest/installation.html) was installed), and follow the on screen instructions:
+```
+mamba env create --file=envs/upstream.yml
+```
+2) Using conda, and follow the on screen instructions.
+```
+conda env create --file=envs/upstream.yml
+```
 
-Now, the upstream environment is created and needs to be activated: ```conda activate upstream```. You can then access one of the following pipelines and play with it (enjoy!).
-        
-### Pipelines:
-
-- In this repository the following upstream pipelines are listed:
-    - reference_genome (Download and Index Reference Genomes)
-    - genetics/catch-up (Bulk ChIP and ATAC sequencing upstream analysis)
-    - *...work in progress..*
-    
-### Pipeline update:
-- If any changes are made to the pipelines, it is possible to update the repository by entering the main folder and pulling the update using:
-   ```
-   cd UpStreamPipeline # entering in the main folder
-   git pull            # pull updates
-   ```
-- or removing the cloned repository using ```rm -rf UpStreamPipeline``` (using `rm` carefully) and re-clone the repository as described above.
-
-<hr>
+#### 4. Activate the environment
+Now, the upstream environment is created it needs to be activated: 
+```
+conda activate upstream
+```
+You can then use all of our upstream pipelines using this environment, enjoy!
 
 ### Environment installation note:
-CATCH-UP has been successfully tested for the following operating systems: Ubuntu, CentOS, macOS (Intel CPU), and Windows. Unfortunately, it is not possible to install on macOS with M CPUs at the moment. For any error in the installation step, please open an "issue" so we can give a general solution for users.
+CATCH-UP has been successfully tested for the following operating systems: Ubuntu, CentOS, macOS (Intel CPU), and Windows. Unfortunately, it is not possible to install on macOS with M CPUs at the moment. 
+For any error in the installation step, please open an [issue](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/issues) so we can give a general solution for users.
 
+***
+
+### Pipeline updates :construction:
+If any changes are made to the pipelines, it is possible to update the repository by entering the main folder and pulling the update using:
+   ```
+   # Enter the main folder
+   cd UpStreamPipeline
+
+   # Pull updates
+   git pull           
+   ```
+Alternatively, remove the cloned repository and then re-clone the repository as described above.   
+Warning: use rm carefully!
+
+```
+rm -rf UpStreamPipeline
+``` 
 <hr>
 
-### Contact us
-If you have any suggestions, spot any errors, or have any questions regarding the pipelines, please do no hesitate to contact us anytime.
+### :warning: Warning for University of Oxford CCB users :warning:
+When using this repository, use the default terminal and __do not__ load any module in the server (if logged-in).
 
-Email: [<simone.riva@imm.ox.ac.uk>](simone.riva@imm.ox.ac.uk)
+***
+
+### Contact us
+If you have any suggestions, spot any errors, or have any questions regarding the pipelines, please do no hesitate to contact us anytime.   
+
+:email: &emsp; [<simone.riva@imm.ox.ac.uk>](simone.riva@imm.ox.ac.uk)
