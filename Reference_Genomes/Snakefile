@@ -1,0 +1,15 @@
+from snakemake.utils import validate
+from snakemake.utils import min_version
+
+min_version("7.0.0")
+
+configfile: "config/analysis.yaml"
+
+validate(config, schema="config/schema/config.schema.yaml")
+
+include: "rules/01_genome.smk"
+
+rule all:
+    input:
+        ### download and index a reference genome
+        os.path.join(config["analysis_name"]+os.sep+config['folder_out'], 'genome.txt'),
