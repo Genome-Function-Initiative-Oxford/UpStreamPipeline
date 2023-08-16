@@ -1,0 +1,104 @@
+###################################################################################################################
+##################################### CONFIGURATION FILE FOR TILED-C ANALYSIS #####################################
+###################################################################################################################
+
+
+#------------------------------------------------------------------------------------------------------------------
+# HIC-PRO: step1 and step2 are modified from the HiC-Pro pipeline.
+# For full details and documentation on the original pipeline see https://github.com/nservant/HiC-Pro
+#------------------------------------------------------------------------------------------------------------------
+
+#############################
+# ANALYSIS SET-UP
+#############################
+
+# Path to conda environment.
+conda_env_path: "/project/Wellcome_Discovery/sriva/mambaforge/envs/upstream"
+
+# User email address to which run notifications will be delivered.
+email: "simone.riva@imm.ox.ac.uk"
+
+# Specify the name of the analysis (you should also save this config with the same name).
+analysis_name: "analysis"
+
+# The name that will be asigned to the HiC-Pro output directory.
+hic_pro_output_tag: "HiCPro-Tiled-test"
+
+#############################
+# GENOME SPECIFIC PARAMETERS
+#############################
+
+# Genome build you wish to align the reads to.
+genome_build: "mm39"
+
+# Path to directory containing whole genome fasta sequence for specified genome build.
+genome_path: "/databank/igenomes/Mus_musculus/UCSC/mm39/Sequence/WholeGenomeFasta/genome.fasta"
+
+# Path to bowtie index.  Note: these must be named ny genome e.g. mm39.1.bt2, mm39.2.bt2 etc.
+bowtie_index_path: "/project/hugheslab/egeorgia/02_Projects/08_Caz_artificial_locus/Tiled-C-Oudelaar/Emily-reanalysis/Bowtie2/"
+
+# Path to chromosome size files.
+genome_size_txt: "/project/hugheslab/egeorgia/02_Projects/16_TiledC_analysis/01_HiCPro/mm39_chr_sizes.txt"
+
+#############################
+# CUSTOM EXPERIMENTAL DESIGN
+#############################
+
+# The restriction enzyme in which to in silico digest the genome in step 1.
+restriction_enzyme: "dpnii"
+
+# Ligation site sequence used for reads trimming (this is specific to the restriction enzyme used).
+ligation_site: "GATC"
+
+# Comma-separated list of bin sizes.
+bin_size: "2000,5000"
+
+#############################
+# RAW DATA SOURCES
+#############################
+
+# Directory containing the raw fastq files. Within this directory R1/R2 for each sample should be contained
+# in their own sub-directories named with the sample name.
+origin_fastq_folder: "/project/hugheslab/egeorgia/02_Projects/16_TiledC_analysis/01_HiCPro/fastqs-old"
+
+# Path to capture target, must be in bed format. 
+capture_target_bed: "/project/hugheslab/egeorgia/02_Projects/16_TiledC_analysis/01_HiCPro/alpha_tile_mm39.bed"
+
+
+#------------------------------------------------------------------------------------------------------------------
+# HIC-PLOTTING: involved three steps
+# 1. Pre-processing trims the data to your region of interest to plot heatmaps.
+# 2. Heatmap generation using modified version of HiCPlotter (originally developed by Akdemir & Chin https://github.com/kcakdemir/HiCPlotter) 
+# 3. Virtual Capture-C plotting using ice normalised HiC-Pro output matrices.
+#------------------------------------------------------------------------------------------------------------------
+
+#############################
+# HEATMAPS
+#############################
+
+# Define region of interest (ROI) for plotting (chr:start-end)
+region: "chr11:30070741-33545114"
+
+# Heatmap resolution (must be one of bin_sizes specified for HiC-Pro)
+resolution_hp: 5000
+
+# Bounds for data plotting
+lowerPercentile: 2
+upperPercentile: 98
+
+#############################
+# VIRTUAL CAPTURE-C
+#############################
+
+# Define viewpoint coordinates
+view_point: "chr11:32200546-32201851"
+
+# Resolution (must be one of bin_sizes specified for HiC-Pro)
+resolution_vc: 2000
+
+# The number of bins to include in plot
+plotWindow: 100 
+
+# This is used to group data for plotting. Condition must be contained in sample name.
+# e.g. fastq folder = "KO_mES_rep1", "KO_mES_rep2", "WT_mES_rep1".  Condition = "KO,WT"
+condition: "ES,WT" 

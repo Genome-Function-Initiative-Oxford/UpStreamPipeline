@@ -1,0 +1,11 @@
+
+#########################################################################
+## Paths and Settings  - Start editing here !
+#########################################################################
+
+PREFIX = /project/hugheslab/egeorgia/04_Hughes-Genome-Group-GitHub
+BOWTIE2_PATH = /Filers/home/e/egeorgia/mambaforge/envs/hicpro/bin
+SAMTOOLS_PATH = /Filers/home/e/egeorgia/mambaforge/envs/hicpro/bin
+R_PATH = /Filers/home/e/egeorgia/mambaforge/envs/hicpro/bin
+PYTHON_PATH = /Filers/home/e/egeorgia/mambaforge/envs/hicpro/bin
+CLUSTER_SYS = SLURM

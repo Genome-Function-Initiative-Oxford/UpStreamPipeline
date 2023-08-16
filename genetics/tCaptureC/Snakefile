@@ -1,0 +1,34 @@
+import os, sys, glob
+import pandas as pd
+from snakemake.utils import validate
+from snakemake.utils import min_version
+
+min_version("7.0.0")
+
+configfile: "config/analysis.yaml"
+
+# validate(config, schema="config/schema/config.schema.yaml")
+
+sample_names = glob.glob(config["origin_fastq_folder"]+os.sep+"*")
+sample_names = [s.split("/")[-1] for s in sample_names]
+
+include: "rules/01_digest.smk"
+include: "rules/02_hicpro_steps.smk"
+include: "rules/03_plotheatmap.smk"
+include: "rules/04_juicer.smk"
+
+rule all:
+    input:
+        config["analysis_name"]+os.sep+"%s_%s.bed"%(config["genome_build"], config["restriction_enzyme"]),
+        config["analysis_name"]+os.sep+"config.txt",
+        config["analysis_name"]+os.sep+config["hic_pro_output_tag"]+os.sep+"logs/HiC-Pro_step1.log",
+        config["analysis_name"]+os.sep+config["hic_pro_output_tag"]+os.sep+"logs/HiC-Pro_step2.log",
+        expand(config["analysis_name"]+os.sep+config["hic_pro_output_tag"]+os.sep+"plots/{sample}_HiCPlotter-py3.sh", sample=sample_names),
+        expand(config["analysis_name"]+os.sep+config["hic_pro_output_tag"]+os.sep+"logs/{sample}_heatmap.log", sample=sample_names),
+        config["analysis_name"]+os.sep+config["hic_pro_output_tag"]+os.sep+"logs/virtual_capture.log",
+        expand(config["analysis_name"]+os.sep+config["hic_pro_output_tag"]+os.sep+"logs/juicer_for_UCSC/{sample}.log", sample=sample_names),
+
+
+        
+
+
