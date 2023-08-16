@@ -1,0 +1,37 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+_yamldoc_title: Parameter Reference
+_yamldoc_description: All of the parameters available for tuning avocato may be found on this page. It is automatically generated from the general configuration template.
+
+type: object
+
+properties:
+    analysis_name: 
+        type: string
+
+    genome1: 
+        fa: 
+            type: string
+        chr:  
+            type: string
+
+    genome2: 
+        fa:   
+            type: string
+        chr:   
+            type: string
+
+    move_output_files: 
+        type: string
+        enum: ["True", "False"]
+
+    output_dir:
+        type: string
+        enum: ["True", "False"]
+
+    tag_output_dir:
+        type: string
+        enum: ["True", "False"]
+
+    custom_bowtie2_dir: 
+        type: string
