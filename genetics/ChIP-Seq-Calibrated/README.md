@@ -26,7 +26,7 @@ N(spike-in in Input)    Σ reads aligning to spike-in genome in the correspondin
 
 #### 1. UpStreamPipeline set-up :hammer_and_wrench:
 
-Follow the instructions on [UpStreamPipeline](https://github.com/Hughes-Genome-Group/UpStreamPipeline) to set up the correct environment. 
+Follow the instructions on [UpStreamPipeline](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline) to set up the correct environment. 
 
 #### 2. Catenated genome :dna: + :dna:
 
