@@ -1,0 +1,8 @@
+configfile: "config/analysis.yaml"
+
+include: "rules/01_genome.smk"
+
+rule all:
+    input:
+        ### create a custom genome reference
+        os.path.join(config["analysis_name"]+os.sep+config['custom_bowtie2_dir'], 'genome.txt'),
