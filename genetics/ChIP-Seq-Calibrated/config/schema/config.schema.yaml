@@ -1,0 +1,210 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+_yamldoc_title: Parameter Reference
+_yamldoc_description: All of the parameters available for tuning avocato may be found on this page. It is automatically generated from the general configuration template.
+
+type: object
+
+properties:
+  analysis_name: 
+    type: string
+
+  fastq_home_dir: 
+    type: string
+
+  single_paired_end: 
+    type: string
+    enum: [single, paired]
+
+  cutadapters_bool: 
+    type: string
+    enum: ["True", "False"]
+
+  bowtie2_dir: 
+    type: string
+    enum: [bowtie2]
+    
+  genome: 
+    type: string
+    enum: [hg19, hg38, mm9, mm10, mm39]
+
+  spikein: 
+    type: string
+    enum: [hg19, hg38, mm9, mm10, mm39]
+
+  input_provided: 
+    type: string
+    enum: ["True", "False"]
+
+  bigDataUrl: 
+    type: string
+
+  move_output_files: 
+    type: string
+    enum: ["True", "False"]
+
+  output_dir: 
+    type: string
+
+  tag_output_dir: 
+    type: string
+
+  move_bw_public_folder: 
+    type: string
+    enum: ["True", "False"]
+
+  public_output_dir: 
+    type: string
+
+  tag_public_output_dir: 
+    type: string
+
+  trimming_SE_extra: 
+    type: string
+
+  trimming_PE_extra: 
+    type: string
+
+  bowtie2_extra:
+    type: string
+
+  samtools_filtering_extra:
+    type: string
+
+  samtools_sort_extra: 
+    type: string
+
+  mark_duplicates_extra: 
+    type: string
+
+  samtools_index_extra: 
+    type: string
+
+  bam_coverage_params1: 
+    type: string
+
+  bam_coverage_params2: 
+    type: string
+
+  delete_intermediate_files: 
+    type: string
+    enum: ["True", "False"]
+
+  single_paired_folder_rm: 
+    type: string
+    enum: ["True", "False"]
+
+  reads_rm: 
+    type: string
+    enum: ["True", "False"]
+
+  trimming_rm: 
+    type: string
+    enum: ["True", "False"]
+
+  bowtie2_rm: 
+    type: string
+    enum: ["True", "False"]
+
+  sorted_rm: 
+    type: string
+    enum: ["True", "False"]
+
+  duplicates_rm: 
+    type: string
+    enum: ["True", "False"]
+
+  splitgenome_rm: 
+    type: string
+    enum: ["True", "False"]
+
+  readcounts_rm: 
+    type: string
+    enum: ["True", "False"]
+
+  downsampling_factor_rm: 
+    type: string
+    enum: ["True", "False"]
+
+  downsampling_rm: 
+    type: string
+    enum: ["True", "False"]
+
+  bam_coverage_rm: 
+    type: string
+    enum: ["True", "False"]
+
+  peaks_rm: 
+    type: string
+    enum: ["True", "False"]
+
+  track_rm: 
+    type: string
+    enum: ["True", "False"]
+
+  single_paired_folder: 
+    type: string
+
+  reads: 
+    type: string
+
+  reads_qc: 
+    type: string
+
+  trimming: 
+    type: string
+
+  trimming_qc: 
+    type: string
+
+  bowtie2: 
+    type: string
+
+  bowtie2_qc: 
+    type: string
+
+  sorted: 
+    type: string
+
+  duplicates: 
+    type: string
+
+  duplicates_qc: 
+    type: string
+
+  splitgenome: 
+    type: string
+
+  readcounts : 
+    type: string
+
+  readcounts_tmp: 
+    type: string
+
+  downsampling_factor: 
+    type: string
+
+  downsampling_factor_log: 
+    type: string
+
+  downsampling: 
+    type: string
+
+  downsampling_log: 
+    type: string
+
+  bam_coverage: 
+    type: string
+
+  peaks: 
+    type: string
+
+  peaks_log: 
+    type: string
+
+  track: 
+    type: string
+
+  cleaning: 
+    type: string
+    
