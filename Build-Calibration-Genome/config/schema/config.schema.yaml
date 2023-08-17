@@ -27,11 +27,9 @@ properties:
 
     output_dir:
         type: string
-        enum: ["True", "False"]
 
     tag_output_dir:
         type: string
-        enum: ["True", "False"]
 
     custom_bowtie2_dir: 
         type: string

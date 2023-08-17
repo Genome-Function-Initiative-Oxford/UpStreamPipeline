@@ -52,8 +52,8 @@ Experiment1_KO-vs_WT
 
 #### Run snakemake (slurm):
 If executing the job on a cluster system:
-- Modify parameters of ```submit_upstream.sh```
-- Submit job ```sbatch submit_upstream.sh```
+- Modify parameters of ```submit.sh```
+- Submit job ```sbatch submit.sh```
 - Note: for internal WIMM users see [SLURM-BASICS](https://datashare.molbiol.ox.ac.uk/public/man/man7/slurm-basics.7.html) for more info on how to the modify jobscript.
 
 #### :warning: Warning:

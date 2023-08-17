@@ -2,6 +2,8 @@ import os, sys, shutil, re
 import pandas as pd
 
 configfile: "config/analysis.yaml"
+
+validate(config, schema="config/schema/config.schema.yaml")
     
 if config["single_paired_end"] not in ['single', 'paired']:
     print("config['single_paired_end'] must be 'single' or 'paired'!")
@@ -39,18 +41,6 @@ if not os.path.exists(config["analysis_name"]+os.sep+config["single_paired_folde
                 for f in df[0].tolist():
                     nfile.write(f+".fastq.gz\n")
 
-# if not os.path.exists(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"samples.csv"):
-#     if config["single_paired_end"] == 'paired':
-#         with open(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"samples.csv", 'w') as nfile:
-#             nfile.write("sample\tr1\tr2\n")
-#             for f in pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"fastqfile_home_dir.txt", header=None)[0].tolist():
-#                 nfile.write("%s\t%s_R1.fastq.gz\t%s_R2.fastq.gz\n"%(f, f, f))
-#     else:
-#         with open(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"samples.csv", 'w') as nfile:
-#             nfile.write("sample\tr\n")
-#             for f in pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"fastqfile_home_dir.txt", header=None)[0].tolist():
-#                 nfile.write("%s\t%s.fastq.gz\n"%(f, f))
-
 if not os.path.exists(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"samples_pairing.csv"):
     df = pd.read_csv("fastqfile_home_dir.txt", header=None, sep='\t')
     if config["input_provided"] == "True":
@@ -61,7 +51,6 @@ if not os.path.exists(config["analysis_name"]+os.sep+config["single_paired_folde
     else:
         df[1] = df[0]
         df.to_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"samples_pairing.csv", sep='\t', index=False, header=None)
-    # shutil.copy("samples_pairing.csv", config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep)
 
 origin_fastq_raw = pd.read_csv(config["analysis_name"]+os.sep+config["single_paired_folder"]+os.sep+"fastqfile_home_dir.txt", header=None)[0]
 origin_fastq     = [of.split(".fastq.gz")[0] for of in list(origin_fastq_raw)]

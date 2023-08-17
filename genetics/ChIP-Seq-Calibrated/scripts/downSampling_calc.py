@@ -114,11 +114,6 @@ if input_provided=="True":
         if i != j:
             renaming_dict_2[j] = i
             
-    # renaming_dict_2 = {}
-    # for i, j in zip(renaming['sample'], renaming['name']):
-    #     if i != j:
-    #         renaming_dict_2[j] = i
-            
     new_merged_2 = new_merged.copy()
     new_sample = []
     for i in new_merged_2['SAMPLE']:

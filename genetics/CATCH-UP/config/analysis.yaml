@@ -6,7 +6,7 @@
 analysis_name: "analysis"
 
 ### fastq_home_dir: specify the directory containing the original fastq files
-fastq_home_dir: "" #<path-to-fastq-files-directory>
+fastq_home_dir: "<path-to-fastq-files-directory>"
 
 ### single_paired_end: specify if reads are single or paired end ('single' or 'paired')
 single_paired_end: "paired"
@@ -21,7 +21,7 @@ cutadapters_bool: "True"
 aligner_algorithm: "bowtie2"
 
 ### aligner_dir: specify directory where aligner genome is located (do not include final slash '/' at the end of the path)
-aligner_dir: "/databank/igenomes/Homo_sapiens/UCSC/hg38/Sequence/Bowtie2Index/genome"
+aligner_dir: "/<path>/Bowtie2Index/genome"
 
 ### genome_built_version: version of the built genome. It must be consistent with the aligner_dir chosen
 genome_built_version: "hg38"
@@ -34,7 +34,7 @@ peak_caller: "lanceotron"
 
 ### bigDataUrl: specify the location for public bigWigs and this is the link you can copy and paste into UCSC
 ### NB: url must end with a slash '/'
-bigDataUrl: "https://datashare.molbiol.ox.ac.uk/public/project/<project-folder>/.../...bw"
+bigDataUrl: "https://<path>/"
 
 
 
@@ -45,9 +45,9 @@ bigDataUrl: "https://datashare.molbiol.ox.ac.uk/public/project/<project-folder>/
 ### move_output_files: specify if you want to output files ('True' or 'False')
 move_output_files: "False"
 ### Specify the directory where final files must be moved (do not include final slash '/' at the end of the path)
-output_dir:        "" #<path-to-output-directory>
+output_dir:        "<path-to-output-directory>"
 ### Specify name of new directory that will be created in the ouput directory
-tag_output_dir:    "" #<tag-output-directory>
+tag_output_dir:    "<tag-output-directory>"
 
 ###################################################################################################################
 
@@ -56,9 +56,9 @@ tag_output_dir:    "" #<tag-output-directory>
 ### This is required for visualisation on Multi Locus View or UCSC genome browser
 move_bw_public_folder: "False"
 ### Specify public directory where bw files must be copied (do not include final slash '/' at the end of the path)
-public_output_dir:     "" #<path-to-output-directory>
+public_output_dir:     "<path-to-output-directory>"
 ### Specify name of new directory that will be created in the ouput directory
-tag_public_output_dir: "" #<tag-output-directory>
+tag_public_output_dir: "<tag-output-directory>"
 
 
 

@@ -71,10 +71,10 @@ rule trimming:
             fi
         """
 
+        os.path.join(config["analysis_name"]+os.sep+config["trimming_qc"], "{sample}_qc.txt"),
 
 rule bowtie2:
     input:
-        os.path.join(config["analysis_name"]+os.sep+config["trimming_qc"], "{sample}_qc.txt"),
     output:
         os.path.join(config["analysis_name"]+os.sep+config["bowtie2"], "{sample}.bam"),
     params:
@@ -85,7 +85,8 @@ rule bowtie2:
         out_folder=config["bowtie2"],
         threads="4",
         end=config["single_paired_end"],
-        extra="",
+        extra=config["bowtie2_extra"],
+        samtools_extra=config["samtools_filtering_extra"],
     log:
         os.path.join(config["analysis_name"], "logs/03_bowtie2/{sample}.txt"),
     shell:
@@ -93,9 +94,9 @@ rule bowtie2:
             mkdir -p {params.config_name}/{params.out_folder}
             if [ {params.end} == "paired" ]
             then
-                (bowtie2 --threads {params.threads} -1 {params.sample_p[0]} -2 {params.sample_p[1]} -x {params.idx} {params.extra} | samtools view -o {output} --output-fmt BAM -) > {log}
+                (bowtie2 --threads {params.threads} -1 {params.sample_p[0]} -2 {params.sample_p[1]} -x {params.idx} {params.extra} | grep -v XS: - | samtools view {params.samtools_extra} -o {output} --output-fmt BAM -) > {log}
             else
-                (bowtie2 --threads {params.threads} -U {params.sample_s} -x {params.idx} {params.extra} -p 56 --no-mixed --no-discordant| grep -v XS: - | samtools view -b -h -S -F4 -o {output} --output-fmt BAM -) > {log}
+                (bowtie2 --threads {params.threads} -U {params.sample_s} -x {params.idx} {params.extra} | grep -v XS: - | samtools view {params.samtools_extra} -o {output} --output-fmt BAM -) > {log}
             fi
             
         """

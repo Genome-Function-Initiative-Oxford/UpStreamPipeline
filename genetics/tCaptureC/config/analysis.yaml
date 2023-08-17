@@ -13,16 +13,16 @@
 #############################
 
 # Path to conda environment.
-conda_env_path: "/project/Wellcome_Discovery/sriva/mambaforge/envs/upstream"
+conda_env_path: "/<path>/mambaforge/envs/upstream"
 
 # User email address to which run notifications will be delivered.
-email: "simone.riva@imm.ox.ac.uk"
+email: "<email>"
 
 # Specify the name of the analysis (you should also save this config with the same name).
 analysis_name: "analysis"
 
 # The name that will be asigned to the HiC-Pro output directory.
-hic_pro_output_tag: "HiCPro-Tiled-test"
+hic_pro_output_tag: "<tag-analysis-name>"
 
 #############################
 # GENOME SPECIFIC PARAMETERS
@@ -32,13 +32,13 @@ hic_pro_output_tag: "HiCPro-Tiled-test"
 genome_build: "mm39"
 
 # Path to directory containing whole genome fasta sequence for specified genome build.
-genome_path: "/databank/igenomes/Mus_musculus/UCSC/mm39/Sequence/WholeGenomeFasta/genome.fasta"
+genome_path: "/<path>/genome.fasta"
 
 # Path to bowtie index.  Note: these must be named ny genome e.g. mm39.1.bt2, mm39.2.bt2 etc.
-bowtie_index_path: "/project/hugheslab/egeorgia/02_Projects/08_Caz_artificial_locus/Tiled-C-Oudelaar/Emily-reanalysis/Bowtie2/"
+bowtie_index_path: "/<path>/Bowtie2/"
 
 # Path to chromosome size files.
-genome_size_txt: "/project/hugheslab/egeorgia/02_Projects/16_TiledC_analysis/01_HiCPro/mm39_chr_sizes.txt"
+genome_size_txt: "/<path>/mm39_chr_sizes.txt"
 
 #############################
 # CUSTOM EXPERIMENTAL DESIGN
@@ -59,10 +59,10 @@ bin_size: "2000,5000"
 
 # Directory containing the raw fastq files. Within this directory R1/R2 for each sample should be contained
 # in their own sub-directories named with the sample name.
-origin_fastq_folder: "/project/hugheslab/egeorgia/02_Projects/16_TiledC_analysis/01_HiCPro/fastqs-old"
+origin_fastq_folder: "<path-to-fastq-files-directory>"
 
 # Path to capture target, must be in bed format. 
-capture_target_bed: "/project/hugheslab/egeorgia/02_Projects/16_TiledC_analysis/01_HiCPro/alpha_tile_mm39.bed"
+capture_target_bed: "/<path>/alpha_tile_mm39.bed"
 
 
 #------------------------------------------------------------------------------------------------------------------
@@ -77,7 +77,7 @@ capture_target_bed: "/project/hugheslab/egeorgia/02_Projects/16_TiledC_analysis/
 #############################
 
 # Define region of interest (ROI) for plotting (chr:start-end)
-region: "chr11:30070741-33545114"
+region: "<chr:start-end>" #e.g., chr11:30070741-33545114
 
 # Heatmap resolution (must be one of bin_sizes specified for HiC-Pro)
 resolution_hp: 5000
@@ -91,7 +91,7 @@ upperPercentile: 98
 #############################
 
 # Define viewpoint coordinates
-view_point: "chr11:32200546-32201851"
+view_point: "<chr:start-end>" #e.g., chr11:32200546-32201851
 
 # Resolution (must be one of bin_sizes specified for HiC-Pro)
 resolution_vc: 2000

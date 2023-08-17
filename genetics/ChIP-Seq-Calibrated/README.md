@@ -98,7 +98,7 @@ Run snakemake selecting number of cores (for parallelisation purpose)
 snakemake --configfile=config/analysis.yaml all --cores 4
 ```
 OPT2: SLURM   
-Modify parameters of submit_upstream.sh, then submit the job as follows 
+Modify parameters of submit.sh, then submit the job as follows 
 ```
-sbatch submit_upstream.sh
+sbatch submit.sh
 ```

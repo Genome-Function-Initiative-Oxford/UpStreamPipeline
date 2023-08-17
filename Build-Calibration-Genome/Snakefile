@@ -1,5 +1,7 @@
 configfile: "config/analysis.yaml"
 
+validate(config, schema="config/schema/config.schema.yaml")
+
 include: "rules/01_genome.smk"
 
 rule all:

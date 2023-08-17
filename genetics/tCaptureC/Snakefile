@@ -7,7 +7,7 @@ min_version("7.0.0")
 
 configfile: "config/analysis.yaml"
 
-# validate(config, schema="config/schema/config.schema.yaml")
+validate(config, schema="config/schema/config.schema.yaml")
 
 sample_names = glob.glob(config["origin_fastq_folder"]+os.sep+"*")
 sample_names = [s.split("/")[-1] for s in sample_names]
