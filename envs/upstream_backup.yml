@@ -1,0 +1,40 @@
+name: upstream_backup
+channels:
+    - anaconda
+    - bioconda
+    - conda-forge
+    - defaults
+    - sgriva
+    - r
+dependencies:
+    - bedtools
+    - bowtie2
+    - bwa 
+    - bwa-mem2
+    - bx-python
+    - cutadapt
+    - deeptools
+    - fastqc
+    - iced
+    - macs2
+    - multiqc  
+    - conda-forge::ncurses
+    - openssl
+    - picard
+    # - pybedtools
+    - pybigwig
+    - python=3.9.10
+    - sambamba
+    - samtools
+    - seaborn
+    - snakemake=7.0.0
+    - snakemake-wrapper-utils
+    - ucsc-bedgraphtobigwig
+    - lanceotron
+    - r-ggplot2
+    - r-rcolorbrewer
+    - star=2.7.1a
+    - subread
+    - tabulate=0.8
+    - trimmomatic
+    # - trim-galore flash ucsc-blat  java-jdk ucsc-wigtobigwig biopython repeatmasker
