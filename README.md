@@ -3,30 +3,30 @@
 "Upstream" includes the necessary steps to go from raw data output (usually fastq files) to a format which is visually interpretable by a researcher (e.g., bigwigs). These upstream pipelines allow wet-lab scientists to reproducibly analyse their own data without needing any prior knowledge of bioinformatics. These pipelines are built using the snakemake framework and designed to be both user-friendly and to combat the issue of reproducibility in genomic data analysis.
 
 
-### Currently available pipelines:
+## Currently available pipelines:
 Further information is supplied in the README files for each of these pipelines.
 
-#### :heavy_plus_sign: Helper Pipelines
+### :heavy_plus_sign: Helper Pipelines
 [Reference genomes](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/Reference_Genomes)   
 This is designed to streamline the download and index of reference genomes for use in the other pipelines.
 
 [Build Calibration Genome](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/Build-Calibration-Genome)    
 This is designed to streamline the catenation and indexing of a reference genome with a spike-in genome for use in the Calibrated ChIP-seq.
 
-#### :dna: Main Pipelines 
+### :dna: Main Pipelines 
 
-##### GENETICS
-[genetics/CATCH-UP](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/genetics/CATCH-UP)   
+#### GENETICS 
+>[genetics/CATCH-UP](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/genetics/CATCH-UP)   
 Designed for the upstream analysis of bulk ChIP-seq and ATAC-seq data.
 
-[genetics/Calibrated ChIP-seq](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/genetics/ChIP-Seq-Calibrated)   
+>[genetics/Calibrated ChIP-seq](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/genetics/ChIP-Seq-Calibrated)   
 This is specifically designed for the analysis of ChIP-seq data across different experimental and biological conditions in which rigorous normalisation is required for comparison across conditions.
 
-[genetics/tCaptureC](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/genetics/tCaptureC)   
+>[genetics/tCaptureC](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/genetics/tCaptureC)   
 A pipeline which can be used for the analysis of both Capture-C and Tiled Capture-C data.  This incorporates the previously published [HiCPro](https://github.com/nservant/HiC-Pro) and [HiCPlotter](https://github.com/akdemirlab/HiCPlotter) tools into one streamlined analysis.
 
-##### TRANSCRIPTOMICS
-[transcriptomics/Bulk-RNA-Seq](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/transcriptomics/Bulk-RNA-seq)   
+#### TRANSCRIPTOMICS
+>[transcriptomics/Bulk-RNA-Seq](https://github.com/Genome-Function-Initiative-Oxford/UpStreamPipeline/tree/main/transcriptomics/Bulk-RNA-seq)   
 Designed for the analysis of bulk RNA-seq data using the [STAR](https://github.com/alexdobin/STAR) RNA-seq mapping tool.
 
 
