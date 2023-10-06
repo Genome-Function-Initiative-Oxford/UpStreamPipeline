@@ -6,7 +6,7 @@
 analysis_name: "analysis"
 
 ### fastq_home_dir: specify the directory containing the original fastq files, concatenate lanes
-fastq_home_dir: "/project/hugheslab/egeorgia/01_Data/06_Caz-artificial-locus/PolyA-/fastqs"
+fastq_home_dir: "<path-to-fastq-files-directory>"
 
 ### single_paired_end: specify if reads are single or paired end ('single' or 'paired')
 single_paired_end: "paired"
@@ -18,10 +18,10 @@ concatenate_fastq: "False"
 cutadapters_bool: "False"
 
 ### star_dir: specify directory where genome is located
-star_dir: "/databank/igenomes/Mus_musculus/UCSC/mm39/Sequence/STAR"
+star_dir: "/<path>/STAR"
 
 ### gtf_annotation: specify directory where gene annotation is located
-gtf_annotation: "/databank/igenomes/Mus_musculus/UCSC/mm39/Annotation/Genes/refGene.gtf"
+gtf_annotation: "/<path>/refGene.gtf"
 
 ### genome_built_version: version of the built genome. It must be consistent with the aligner_dir chosen
 genome_built_version: "mm39"
@@ -31,7 +31,7 @@ merge_bams: "False"
 
 ### bigDataUrl: specify the location for public bigWigs and this is the link you can copy and paste into UCSC
 ### NB: url must end with a slash ("/")
-bigDataUrl: "https://datashare.molbiol.ox.ac.uk/public/<username>/.../"
+bigDataUrl: "https://<path>/"
 
 
 
@@ -42,9 +42,9 @@ bigDataUrl: "https://datashare.molbiol.ox.ac.uk/public/<username>/.../"
 ### move_output_files: specify if you want to move the output files ('True' or 'False')
 move_output_files: "False"
 ### Specify the directory where final files must be moved.
-output_dir:        "/project/hugheslab/sriva/private_tools/upstream_pipelines_output/RNA-Seq"
+output_dir:        "<path-to-output-directory>"
 ### Specify tag output directory.
-tag_output_dir:    "trial"
+tag_output_dir:    "<tag-output-directory>"
 
 ###################################################################################################################
 
@@ -52,9 +52,9 @@ tag_output_dir:    "trial"
 ### This is required for visulaisation on the UCSC genome browser
 move_bw_public_folder: "False"
 ### Specify public directory where bw files must be copied.
-public_output_dir:     "/datashare/project/hugheslab/sriva"
+public_output_dir:     "<path-to-output-directory>"
 ### Specify tag public output directory.
-tag_public_output_dir: "trial"
+tag_public_output_dir: "<tag-output-directory>"
 
 
 ###################################################################################################################
