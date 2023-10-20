@@ -60,8 +60,8 @@ rule concatenating:
             import glob, subprocess
             if params.end == 'paired':
                 
-                infastq1 = glob.glob(params.folderin+os.sep+wildcards.sample+"*"+"_R1.fastq.gz")
-                infastq2 = glob.glob(params.folderin+os.sep+wildcards.sample+"*"+"_R2.fastq.gz")
+                infastq1 = sorted(glob.glob(params.folderin+os.sep+wildcards.sample+"*"+"_R1.fastq.gz"))
+                infastq2 = sorted(glob.glob(params.folderin+os.sep+wildcards.sample+"*"+"_R2.fastq.gz"))
 
                 outfasq1 = params.folderout+os.sep+wildcards.sample+"_R1.fastq.gz"
                 outfasq2 = params.folderout+os.sep+wildcards.sample+"_R2.fastq.gz"
