@@ -240,7 +240,7 @@ rule merge_bam:
         os.path.join(config["analysis_name"]+os.sep+config["merge"], "{sample_merged}_%s.bam"%genomeV),
     params:
         config_name=config["analysis_name"],
-        folder_sorted=config["analysis_name"]+os.sep+config["sorted"],
+        folder_duplicates=config["analysis_name"]+os.sep+config["duplicates"],
         folder_merge_bams=config["analysis_name"]+os.sep+config["merge"],
         merge_bams=config["merge_bams"],
         info_merge_file=config["analysis_name"]+os.sep+config["merge"]+os.sep+"Unmerged.txt",
@@ -251,10 +251,10 @@ rule merge_bam:
             mkdir -p {params.folder_merge_bams}
             if [ "{params.merge_bams}" == "True" ]
             then
-                samtools merge {output} {params.folder_sorted}/{wildcards.sample_merged}*
+                samtools merge {output} {params.folder_duplicates}/{wildcards.sample_merged}*
             else
                 echo These bam files have not been merged \(as stated in the config file\)!!! >> {params.info_merge_file}
-                cp {params.folder_sorted}/{wildcards.sample_merged}* {output}
+                cp {params.folder_duplicates}/{wildcards.sample_merged}* {output}
             fi
         """      
                 
