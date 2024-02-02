@@ -37,3 +37,4 @@ dependencies:
   - subread=2.0.3=he4a0461_3
   - tabulate=0.8.10=py39h06a4308_0
   - trimmomatic=0.39=hdfd78af_2
+  - typing_extensions=4.7.1=py39h06a4308_0
