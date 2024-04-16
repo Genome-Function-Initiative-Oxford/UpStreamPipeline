@@ -15,7 +15,7 @@ properties:
 
   method: 
     type: string
-    enum: [bowtie2, bwa-mem2]
+    enum: [bowtie, bowtie2, bwa-mem2, star]
 
   move_output_files:
     type: string

@@ -1,0 +1,32 @@
+###################################################################################################################
+############################################### User defined params ###############################################
+###################################################################################################################
+
+
+### analysis_name: your analysis must have a unique name. This name will be both the name of your configuration file, and the name of the folder with all analysis
+analysis_name: "hg38_bowtie"
+
+### genome: which genome to download and index
+genome: "hg38" 
+
+### method: method-build for reference genome ('bowtie2' or 'bwa-mem2')
+method: "bowtie"
+
+
+###################################################################################################################
+################################################### Move folders ##################################################
+###################################################################################################################
+
+### move_output_files: specify if you want to move output files ('True' or 'False')
+move_output_files: "False"
+### Specify the directory where final files must be moved (do not include final slash '/' at the end of the path)
+output_dir:        "" #<path-to-output-directory>
+### Specify name of new directory that will be created in the ouput directory
+tag_output_dir:    "" #<tag-output-directory>
+
+###################################################################################################################
+############################################## Folders (DO NOT touch) #############################################
+###################################################################################################################
+
+folder_out: "results/"
+
